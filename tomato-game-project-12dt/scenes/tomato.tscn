@@ -1,11 +1,18 @@
 [gd_scene format=3 uid="uid://cvxoiw8lbxwf4"]
 
+[ext_resource type="Script" uid="uid://cxqsglgv3ft0f" path="res://scripts/tomato.gd" id="1_tsxsy"]
+[ext_resource type="Texture2D" uid="uid://c8byoln8u6gus" path="res://assets/tomato-stage-four.png" id="2_pjj58"]
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t24vs"]
 height = 26.0
 
 [node name="Tomato" type="CharacterBody2D" unique_id=2090982903]
+script = ExtResource("1_tsxsy")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=337378425]
+position = Vector2(5.9604645e-07, -1.9999998)
+scale = Vector2(0.8666667, 0.8666667)
+texture = ExtResource("2_pjj58")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=699080727]
 rotation = 1.5707964
