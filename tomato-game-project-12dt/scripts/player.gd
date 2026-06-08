@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+signal plant_seed 
+
 var speed: float = 300.0
 
 
@@ -12,6 +14,9 @@ func _process(delta: float) -> void:
 	direction.x = Input.get_axis("ui_left", "ui_right")
 	direction.y = Input.get_axis("ui_up", "ui_down")
 	
-	velocity = speed * direction.normalized()
+	if Input.is_action_just_pressed("plant_seed"):
+		emit_signal("plant_seed")
+		
 	
+	velocity = speed * direction.normalized()
 	move_and_slide()

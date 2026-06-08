@@ -8,5 +8,13 @@
 [node name="Player" parent="." unique_id=288673987 instance=ExtResource("1_o5qli")]
 position = Vector2(441, 261)
 
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player" unique_id=864489997]
+visibility_layer = 5
+remote_path = NodePath("../../Camera2D")
+
 [node name="Tomato" parent="." unique_id=2090982903 instance=ExtResource("2_0wfyh")]
 position = Vector2(695, 217)
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=764322769]
+position = Vector2(441, 261)
+position_smoothing_enabled = true
