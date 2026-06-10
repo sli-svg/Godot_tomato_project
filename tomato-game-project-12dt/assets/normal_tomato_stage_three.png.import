@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bwnnsgjaso1s1"
-path="res://.godot/imported/tomato-stage-two.png-c6afd6aacd5039fcb6b51b91a2c67e55.ctex"
+uid="uid://538ep73e7y7p"
+path="res://.godot/imported/normal_tomato_stage_three.png-ef84baca63ea27b889f02e92830bcc1a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tomato-stage-two.png"
-dest_files=["res://.godot/imported/tomato-stage-two.png-c6afd6aacd5039fcb6b51b91a2c67e55.ctex"]
+source_file="res://assets/normal_tomato_stage_three.png"
+dest_files=["res://.godot/imported/normal_tomato_stage_three.png-ef84baca63ea27b889f02e92830bcc1a.ctex"]
 
 [params]
 
