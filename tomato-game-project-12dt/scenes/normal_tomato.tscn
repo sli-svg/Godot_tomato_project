@@ -1,5 +1,9 @@
 [gd_scene format=3 uid="uid://djisiyi8iamfs"]
 
-[ext_resource type="PackedScene" uid="uid://85mvas8ctl6m" path="res://scenes/base_tomato.tscn" id="1_ryxe5"]
+[ext_resource type="PackedScene" uid="uid://85mvas8ctl6m" path="res://tomato/base_tomato.tscn" id="1_ryxe5"]
 
 [node name="normal_tomato" unique_id=1979973591 instance=ExtResource("1_ryxe5")]
+
+[node name="Sprite2D" parent="." index="0" unique_id=428324084]
+position = Vector2(0, -9)
+region_rect = Rect2(0, 32, 32, 24)

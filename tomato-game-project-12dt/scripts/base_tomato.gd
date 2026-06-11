@@ -1,5 +1,5 @@
 extends CharacterBody2D
-
+class_name tomato
 
 @export var amount: int = 2
 @export var harvest_ready: bool = false

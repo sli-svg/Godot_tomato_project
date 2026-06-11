@@ -3,20 +3,29 @@
 [ext_resource type="Script" uid="uid://dx3iam2rdcj7q" path="res://scripts/base_tomato.gd" id="1_vv46m"]
 [ext_resource type="Texture2D" uid="uid://ffpq5an7jaud" path="res://assets/tomato_life_time.png" id="2_gwv3b"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_rcsjv"]
+[sub_resource type="Animation" id="Animation_gwv3b"]
+resource_name = "0"
+
+[sub_resource type="Animation" id="Animation_0qt8v"]
+resource_name = "1"
+
+[sub_resource type="Animation" id="Animation_8uani"]
+resource_name = "2"
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vv46m"]
+_data = {
+&"0": SubResource("Animation_gwv3b"),
+&"1": SubResource("Animation_0qt8v"),
+&"2": SubResource("Animation_8uani")
+}
 
-[node name="base_tomato" type="CharacterBody2D" unique_id=1979973591]
+[node name="base_tomato" type="Node2D" unique_id=2062819230]
 script = ExtResource("1_vv46m")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=428324084]
 texture = ExtResource("2_gwv3b")
 region_enabled = true
 region_rect = Rect2(0, 0, 72, 88)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=753892466]
-shape = SubResource("RectangleShape2D_rcsjv")
 
 [node name="Timer" type="Timer" parent="." unique_id=1784133535]
 one_shot = true

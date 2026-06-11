@@ -15,7 +15,7 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if not player == null: 
 		look_at(player.global_position)
 		velocity = Vector2(1,0).rotated(rotation) * speed
