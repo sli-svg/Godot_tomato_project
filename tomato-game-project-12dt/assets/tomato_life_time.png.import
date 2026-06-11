@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dc8o8xbts0ywp"
-path="res://.godot/imported/tomato_lifetime.png-5623458d07d73227e179f63ddc55b306.ctex"
+uid="uid://ffpq5an7jaud"
+path="res://.godot/imported/tomato_life_time.png-91fd633ab7e236b3259ded617c8351b4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tomato_lifetime.png"
-dest_files=["res://.godot/imported/tomato_lifetime.png-5623458d07d73227e179f63ddc55b306.ctex"]
+source_file="res://assets/tomato_life_time.png"
+dest_files=["res://.godot/imported/tomato_life_time.png-91fd633ab7e236b3259ded617c8351b4.ctex"]
 
 [params]
 

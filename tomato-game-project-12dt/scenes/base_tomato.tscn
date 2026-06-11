@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://85mvas8ctl6m"]
+
+[ext_resource type="Script" uid="uid://dx3iam2rdcj7q" path="res://scripts/base_tomato.gd" id="1_vv46m"]
+[ext_resource type="Texture2D" uid="uid://ffpq5an7jaud" path="res://assets/tomato_life_time.png" id="2_gwv3b"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rcsjv"]
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vv46m"]
+
+[node name="base_tomato" type="CharacterBody2D" unique_id=1979973591]
+script = ExtResource("1_vv46m")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=428324084]
+texture = ExtResource("2_gwv3b")
+region_enabled = true
+region_rect = Rect2(0, 0, 72, 88)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=753892466]
+shape = SubResource("RectangleShape2D_rcsjv")
+
+[node name="Timer" type="Timer" parent="." unique_id=1784133535]
+one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1974893237]
+root_node = NodePath("../Timer")
+libraries/ = SubResource("AnimationLibrary_vv46m")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
