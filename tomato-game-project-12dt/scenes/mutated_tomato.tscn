@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://c5l1batkw5k2a"]
+
+[ext_resource type="PackedScene" uid="uid://85mvas8ctl6m" path="res://base_tomato.tscn" id="1_0h1sb"]
+
+[node name="mutated_tomato" unique_id=2062819230 instance=ExtResource("1_0h1sb")]

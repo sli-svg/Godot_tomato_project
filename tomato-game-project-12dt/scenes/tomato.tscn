@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cvxoiw8lbxwf4"]
 
-[ext_resource type="Script" uid="uid://cxqsglgv3ft0f" path="res://scripts/tomato.gd" id="1_tsxsy"]
+[ext_resource type="Script" uid="uid://cxqsglgv3ft0f" path="res://scripts/normal_tomato.gd" id="1_tsxsy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tsxsy"]
 size = Vector2(18, 23)
@@ -16,7 +16,7 @@ _data = {
 &"0": SubResource("Animation_tsxsy")
 }
 
-[node name="Tomato" type="CharacterBody2D" unique_id=2090982903]
+[node name="normal_tomato" type="CharacterBody2D" unique_id=2090982903]
 script = ExtResource("1_tsxsy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=699080727]

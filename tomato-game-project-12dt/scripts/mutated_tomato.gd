@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends Node2D
 class_name tomato
 
 @export var amount: int = 2
