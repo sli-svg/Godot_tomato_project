@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://85mvas8ctl6m"]
 
-[ext_resource type="Script" uid="uid://dx3iam2rdcj7q" path="res://scripts/mutated_tomato.gd" id="1_vv46m"]
+[ext_resource type="Script" uid="uid://dx3iam2rdcj7q" path="res://scripts/base_tomato.gd" id="1_vv46m"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4ucuw"]
 load_path = "res://.godot/imported/tomato_life_time.png-91fd633ab7e236b3259ded617c8351b4.ctex"
@@ -88,6 +88,18 @@ tracks/2/keys = {
 "method": &"start"
 }]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("..:harvest_ready")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_8d760"]
 resource_name = "2"
@@ -163,7 +175,7 @@ _data = {
 &"RESET": SubResource("Animation_nfoc4")
 }
 
-[node name="normal_tomato" type="Node2D" unique_id=2062819230]
+[node name="base_tomato" type="Node2D" unique_id=2062819230]
 script = ExtResource("1_vv46m")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=428324084]

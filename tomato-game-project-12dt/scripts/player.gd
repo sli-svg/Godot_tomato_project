@@ -9,7 +9,7 @@ func _ready():
 	pass
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	var direction: Vector2 = Vector2(0.0, 0.0)
 	direction.x = Input.get_axis("ui_left", "ui_right")
 	direction.y = Input.get_axis("ui_up", "ui_down")

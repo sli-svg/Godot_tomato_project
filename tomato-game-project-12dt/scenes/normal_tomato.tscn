@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://djisiyi8iamfs"]
 
-[ext_resource type="PackedScene" uid="uid://85mvas8ctl6m" path="res://base_tomato.tscn" id="1_ryxe5"]
+[ext_resource type="PackedScene" uid="uid://85mvas8ctl6m" path="res://scenes/base_tomato.tscn" id="1_ryxe5"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ryxe5"]
 load_path = "res://.godot/imported/tomato_life_time.png-91fd633ab7e236b3259ded617c8351b4.ctex"
@@ -8,4 +8,5 @@ load_path = "res://.godot/imported/tomato_life_time.png-91fd633ab7e236b3259ded61
 [node name="normal_tomato" unique_id=1979973591 instance=ExtResource("1_ryxe5")]
 
 [node name="Sprite2D" parent="." index="0" unique_id=428324084]
+position = Vector2(0, -9)
 texture = SubResource("CompressedTexture2D_ryxe5")
