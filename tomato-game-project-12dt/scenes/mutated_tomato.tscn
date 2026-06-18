@@ -125,6 +125,10 @@ _data = {
 &"RESET": SubResource("Animation_0xh3d")
 }
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0h1sb"]
+radius = 11.0
+height = 31.999998
+
 [node name="Node2D" type="Node2D" unique_id=616097254]
 script = SubResource("GDScript_6t0ye")
 
@@ -139,5 +143,12 @@ region_rect = Rect2(32, 56, 40, 32)
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2034356904]
 root_node = NodePath("../Timer")
 libraries/ = SubResource("AnimationLibrary_0xh3d")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1207341488]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1273113702]
+position = Vector2(-1, -11)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_0h1sb")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -20,5 +20,15 @@ position_smoothing_enabled = true
 [node name="normal_tomato" parent="." unique_id=1979973591 instance=ExtResource("2_0wfyh")]
 position = Vector2(569, 107)
 
-[node name="Node2D" parent="." unique_id=616097254 instance=ExtResource("3_sugp2")]
+[node name="mutated_tomato" parent="." unique_id=616097254 instance=ExtResource("3_sugp2")]
 position = Vector2(536, 188)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1178040648]
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer" unique_id=676651290]
+offset_left = 53.0
+offset_top = 44.0
+offset_right = 333.0
+offset_bottom = 71.0
+step = 1.0
+value = 100.0

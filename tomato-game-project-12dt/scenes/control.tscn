@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://bjq2wnh6fs5g7"]
+
+[ext_resource type="Script" uid="uid://dijjhu4mkdqdv" path="res://scripts/control.gd" id="1_5p55f"]
+[ext_resource type="Texture2D" uid="uid://c4y6h13y3kitc" path="res://assets/mouth.png" id="2_r67kn"]
+
+[node name="Control" type="Control" unique_id=771321968]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_5p55f")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=1113329532]
+layout_mode = 0
+offset_left = 479.0
+offset_top = 416.0
+offset_right = 793.0
+offset_bottom = 645.0
+texture = ExtResource("2_r67kn")
+
+[node name="Label" type="Label" parent="." unique_id=1536578012]
+layout_mode = 0
+offset_left = 588.0
+offset_top = 91.0
+offset_right = 697.0
+offset_bottom = 114.0
+text = "Tomato Game"
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=751529849]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 11.975
+anchor_top = 9.65
+anchor_right = 19.825
+anchor_bottom = 15.375
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=759896806]
+layout_mode = 2
+
+[node name="play_button" type="Button" parent="PanelContainer/VBoxContainer" unique_id=1946994087]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Play"
+
+[node name="quit_button" type="Button" parent="PanelContainer/VBoxContainer" unique_id=759749789]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Quit"
+
+[node name="options_button" type="Button" parent="PanelContainer/VBoxContainer" unique_id=1692957545]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Optn"
+
+[node name="TextureButton" type="TextureButton" parent="PanelContainer/VBoxContainer" unique_id=539671670]
+layout_mode = 2
+
+[connection signal="pressed" from="PanelContainer/VBoxContainer/play_button" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/quit_button" to="." method="_on_quit_button_pressed"]
