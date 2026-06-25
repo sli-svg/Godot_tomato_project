@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://gxdn7k88onsa"]
+
+[ext_resource type="PackedScene" uid="uid://6ir3y26n3qwl" path="res://scenes/player.tscn" id="1_o5qli"]
+[ext_resource type="Script" uid="uid://bnm7jxkwhl7df" path="res://scripts/main.gd" id="1_tbgi4"]
+[ext_resource type="PackedScene" uid="uid://85mvas8ctl6m" path="res://scenes/base_tomato.tscn" id="2_sugp2"]
+[ext_resource type="PackedScene" uid="uid://c5l1batkw5k2a" path="res://scenes/mutated_tomato.tscn" id="3_sugp2"]
+[ext_resource type="PackedScene" uid="uid://ce2sfutdbdln6" path="res://scenes/day_time_display.tscn" id="4_jyhfs"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tbgi4"]
+bg_color = Color(0.65663403, 0, 0.0858014, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tefeu"]
+bg_color = Color(1.6845763e-06, 0.6722109, 0.008094437, 1)
+
+[node name="Node2D" type="Node2D" unique_id=680051062]
+script = ExtResource("1_tbgi4")
+
+[node name="Player" parent="." unique_id=288673987 instance=ExtResource("1_o5qli")]
+position = Vector2(441, 261)
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player" unique_id=864489997]
+visibility_layer = 5
+remote_path = NodePath("../../Camera2D")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=764322769]
+position = Vector2(441, 261)
+position_smoothing_enabled = true
+
+[node name="base_tomato" parent="." unique_id=2062819230 instance=ExtResource("2_sugp2")]
+position = Vector2(204, 216)
+
+[node name="mutated_tomato" parent="." unique_id=616097254 instance=ExtResource("3_sugp2")]
+position = Vector2(536, 188)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1178040648]
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer" unique_id=676651290]
+offset_left = 53.0
+offset_top = 44.0
+offset_right = 333.0
+offset_bottom = 71.0
+theme_override_styles/background = SubResource("StyleBoxFlat_tbgi4")
+theme_override_styles/fill = SubResource("StyleBoxFlat_tefeu")
+step = 1.0
+value = 100.0
+
+[node name="day_time_display" parent="CanvasLayer" unique_id=1737292908 instance=ExtResource("4_jyhfs")]
+offset_left = 350.83997
+offset_top = 63.0
+offset_right = 390.83997
+offset_bottom = 103.0

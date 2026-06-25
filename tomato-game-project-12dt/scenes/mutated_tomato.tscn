@@ -226,7 +226,7 @@ _data = {
 &"RESET": SubResource("Animation_0xh3d")
 }
 
-[node name="Node2D" type="Node2D" unique_id=616097254]
+[node name="Node2D" type="Node2D" unique_id=616097254 groups=["enemy"]]
 script = SubResource("GDScript_6t0ye")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=507147807]
