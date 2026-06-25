@@ -7,7 +7,8 @@ signal plant_seed
 
 
 var speed: float = 300.0
-var health: int = 10.0
+var health: int = 100.0
+var _can_shoot: bool = true
 
 
 func _ready() -> void:

@@ -22,6 +22,9 @@ func _on_timer_timeout() -> void:
 	$AnimationPlayer.play(str(index))
 "
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0h1sb"]
+size = Vector2(12, 1)
+
 [sub_resource type="Animation" id="Animation_8cebs"]
 resource_name = "0"
 length = 5.0
@@ -63,6 +66,57 @@ tracks/2/keys = {
 "method": &"start"
 }]
 }
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Area2D/CollisionShape2D")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"values": []
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Area2D/CollisionShape2D:shape")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("RectangleShape2D_0h1sb")]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Area2D/CollisionShape2D:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-0.5000002, -6)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Area2D/CollisionShape2D:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.5707964]
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0h1sb"]
+radius = 11.0
+height = 32.0
 
 [sub_resource type="Animation" id="Animation_0h1sb"]
 resource_name = "1"
@@ -102,6 +156,53 @@ tracks/2/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Area2D/CollisionShape2D")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"values": []
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Area2D/CollisionShape2D:shape")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("CapsuleShape2D_0h1sb")]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Area2D/CollisionShape2D:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1, -11)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Area2D/CollisionShape2D:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.5707964]
+}
 
 [sub_resource type="Animation" id="Animation_0xh3d"]
 length = 0.001
@@ -124,10 +225,6 @@ _data = {
 &"1": SubResource("Animation_0h1sb"),
 &"RESET": SubResource("Animation_0xh3d")
 }
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0h1sb"]
-radius = 11.0
-height = 31.999998
 
 [node name="Node2D" type="Node2D" unique_id=616097254]
 script = SubResource("GDScript_6t0ye")

@@ -5,6 +5,9 @@
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4ucuw"]
 load_path = "res://.godot/imported/tomato_life_time.png-91fd633ab7e236b3259ded617c8351b4.ctex"
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vv46m"]
+size = Vector2(12, 1)
+
 [sub_resource type="Animation" id="Animation_d1i32"]
 resource_name = "0"
 length = 5.0
@@ -46,6 +49,45 @@ tracks/2/keys = {
 "method": &"start"
 }]
 }
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Area2D/CollisionShape2D")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"values": []
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Area2D/CollisionShape2D:shape")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("RectangleShape2D_vv46m")]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Area2D/CollisionShape2D:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-0.4999998, -6)]
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vv46m"]
+radius = 11.0
+height = 31.999998
 
 [sub_resource type="Animation" id="Animation_xcms5"]
 resource_name = "1"
@@ -100,44 +142,149 @@ tracks/3/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Area2D/CollisionShape2D")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"values": []
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Area2D/CollisionShape2D:shape")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("CapsuleShape2D_vv46m")]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Area2D/CollisionShape2D:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1, -11)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../Area2D/CollisionShape2D:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.5707964]
+}
 
 [sub_resource type="Animation" id="Animation_8d760"]
 resource_name = "2"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../Sprite2D:region_rect")
+tracks/0/path = NodePath("..:harvest_ready")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Rect2(32, 56, 40, 32)]
+"update": 1,
+"values": [true]
 }
-tracks/1/type = "value"
+tracks/1/type = "method"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../Sprite2D:position")
+tracks/1/path = NodePath("../Sprite2D")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, -14)]
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"values": []
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("..:harvest_ready")
+tracks/2/path = NodePath("../Sprite2D:region_rect")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(32, 56, 40, 32)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Sprite2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1, -14)]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Area2D/CollisionShape2D")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"values": []
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Area2D/CollisionShape2D:shape")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [SubResource("CapsuleShape2D_vv46m")]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Area2D/CollisionShape2D:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1, -11)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../Area2D/CollisionShape2D:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.5707964]
 }
 
 [sub_resource type="Animation" id="Animation_nfoc4"]
@@ -175,15 +322,11 @@ _data = {
 &"RESET": SubResource("Animation_nfoc4")
 }
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vv46m"]
-radius = 11.0
-height = 32.0
-
 [node name="base_tomato" type="Node2D" unique_id=2062819230]
 script = ExtResource("1_vv46m")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=428324084]
-position = Vector2(0, -14)
+position = Vector2(-1, -14)
 texture = SubResource("CompressedTexture2D_4ucuw")
 region_enabled = true
 region_rect = Rect2(0, 56, 32, 32)
