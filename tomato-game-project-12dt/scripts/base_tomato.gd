@@ -4,23 +4,24 @@ extends Node2D
 @export var amount: int = 2
 @export var harvest_ready: bool = false
 @export var health: int = 10
+@export var dangerous_stage: int = 2
 
 
-var index = 0 
+var growth_stage: int = 0 
 
 
 func _ready() -> void:
-	$AnimationPlayer.play(str(index))
+	$AnimationPlayer.play(str(growth_stage))
 
 
 func _on_timer_timeout() -> void:
-	index += 1
-	$AnimationPlayer.play(str(index))
+	growth_stage += 1
+	$AnimationPlayer.play(str(growth_stage))
 
 
 func _damage_player(body: Node2D) -> void:
 	print("player touched plant")
-	if body.is_in_group("player") and index >=2:
+	if body.is_in_group("player") and growth_stage >= dangerous_stage:
 		body._take_damage()
 		print("Player took damage")
 

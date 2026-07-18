@@ -57,6 +57,7 @@ func _take_damage() -> void:
 		print("Player took damage")
 	else:
 		get_tree().call_deferred("reload_current_scene")
+		#change this later
 
 
 func _bullet_cooldown() -> void:
