@@ -18,6 +18,10 @@ config/features=PackedStringArray("4.6", "GL Compatibility")
 window/size/viewport_width=1280
 window/size/viewport_height=720
 
+[global_group]
+
+enemy=""
+
 [input]
 
 ui_up={

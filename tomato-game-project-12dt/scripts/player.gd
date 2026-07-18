@@ -11,7 +11,7 @@ signal plant_seed
 
 
 var speed: float = 300.0
-var health: int = 100.0
+var health: int = 100
 var _can_shoot: bool = true
 
 
@@ -50,10 +50,11 @@ func _shoot() -> void:
 	bullet_timer.start()
 
 	
-func take_damage() -> void:
+func _take_damage() -> void:
 	if health > 1:
 		health -= 1
 		health_ui.value = health
+		print("Player took damage")
 	else:
 		get_tree().call_deferred("reload_current_scene")
 

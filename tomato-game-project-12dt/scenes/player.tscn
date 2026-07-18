@@ -4,13 +4,13 @@
 [ext_resource type="PackedScene" uid="uid://dhltlki11k00p" path="res://scenes/bullet.tscn" id="2_dqkch"]
 [ext_resource type="Texture2D" uid="uid://bt7ai3vaw6o74" path="res://assets/Player 2.png" id="2_qhqgy"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_0wfyh"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_qhqgy"]
 radius = 15.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g2els"]
 radius = 18.0
 
-[node name="Player" type="CharacterBody2D" unique_id=862383164 node_paths=PackedStringArray("bullet_spawn", "bullet_timer") groups=["Player"]]
+[node name="Player" type="CharacterBody2D" unique_id=862383164 node_paths=PackedStringArray("bullet_spawn", "bullet_timer") groups=["player"]]
 script = ExtResource("1_qhqgy")
 bullet_spawn = NodePath("Marker2D")
 bullet_scene = ExtResource("2_dqkch")
@@ -19,8 +19,8 @@ bullet_timer = NodePath("Timer")
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1590140056]
 texture = ExtResource("2_qhqgy")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=7584434]
-shape = SubResource("CircleShape2D_0wfyh")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=350328526]
+shape = SubResource("CircleShape2D_qhqgy")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=859799640]
 
