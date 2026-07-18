@@ -20,7 +20,7 @@ func _on_timer_timeout() -> void:
 
 func _damage_player(body: Node2D) -> void:
 	print("player touched plant")
-	if body.is_in_group("player"):
+	if body.is_in_group("player") and index >=2:
 		body._take_damage()
 		print("Player took damage")
 

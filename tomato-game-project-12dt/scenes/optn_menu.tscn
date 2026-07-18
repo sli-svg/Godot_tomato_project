@@ -1,0 +1,44 @@
+[gd_scene format=3 uid="uid://dfydeqhfbwtvv"]
+
+[ext_resource type="Script" uid="uid://bj0uqebscgorx" path="res://scripts/optn_menu.gd" id="1_v0noh"]
+
+[node name="Control" type="Control" unique_id=750914222]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_v0noh")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=360999719]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 10.925
+anchor_top = 11.8
+anchor_right = 21.825
+anchor_bottom = 17.325003
+offset_top = -8.0
+offset_bottom = -0.00012207031
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=1729182005]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="Button" type="Button" parent="PanelContainer/VBoxContainer" unique_id=1012863806]
+layout_mode = 2
+text = " temporary replacement"
+
+[node name="Button2" type="Button" parent="PanelContainer/VBoxContainer" unique_id=956596828]
+layout_mode = 2
+text = "temporary replacement"
+
+[node name="main_menu_button" type="Button" parent="PanelContainer/VBoxContainer" unique_id=881758717]
+layout_mode = 2
+text = "main menu"
+
+[node name="back_button" type="Button" parent="PanelContainer/VBoxContainer" unique_id=1733199774]
+layout_mode = 2
+text = "back"
+
+[connection signal="pressed" from="PanelContainer/VBoxContainer/main_menu_button" to="." method="_on_main_menu_button_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/back_button" to="." method="_on_back_button_pressed"]
