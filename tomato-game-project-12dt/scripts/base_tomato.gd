@@ -3,10 +3,14 @@ extends CharacterBody2D
 
 @export var amount: int = 2
 @export var harvest_ready: bool = false
+<<<<<<< Updated upstream
 @export var health: int = 10
 @export var dangerous_stage: int = 2
 
 @onready var player = get_tree().get_first_node_in_group("player")
+=======
+@export var age: int = 0
+>>>>>>> Stashed changes
 
 
 var growth_stage: int = 0 

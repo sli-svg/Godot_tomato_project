@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-signal plant_seed 
+signal plant_seed
 
 
 @export var bullet_spawn: Marker2D
