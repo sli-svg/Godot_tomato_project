@@ -525,7 +525,7 @@ rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_vv46m")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=428324084]
-position = Vector2(-1, -14)
+position = Vector2(0, -14)
 texture = SubResource("CompressedTexture2D_4ucuw")
 region_enabled = true
 region_rect = Rect2(0, 56, 32, 32)

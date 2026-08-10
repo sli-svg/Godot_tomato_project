@@ -1,9 +1,6 @@
 extends CharacterBody2D
 
 
-signal plant_seed
-
-
 @export var bullet_spawn: Marker2D
 @export var bullet_scene: PackedScene
 @export var health_ui: ProgressBar
@@ -62,3 +59,9 @@ func _take_damage() -> void:
 
 func _bullet_cooldown() -> void:
 	_can_shoot = true
+
+
+func _plant_seed() -> void:
+	pass
+	#check that the number of selected seed isnt 0.
+	

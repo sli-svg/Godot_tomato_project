@@ -17,6 +17,8 @@ var speed: int = 50
 
 
 func _ready() -> void:
+	#Starts plant's current growth animation when it first appears in the game, 
+	#so player can see the current growth stage of tomato immediately. 
 	$AnimationPlayer.play(str(growth_stage))
 
 func _physics_process(delta) -> void:
@@ -28,12 +30,15 @@ func _physics_process(delta) -> void:
 	else:
 		pass
 		#can add more later. 
-	
+#chase the player after it ripens to act as an enemy
 
 
 func _on_timer_timeout() -> void:
+	#Increases growth stage each time the timer finishes
 	growth_stage += 1
+	#Play animation which matches plant's new growth stage
 	$AnimationPlayer.play(str(growth_stage))
+#
 
 
 func _damage_player(body: Node2D) -> void:
@@ -45,9 +50,7 @@ func _damage_player(body: Node2D) -> void:
 
 func _take_damage() -> void:
 	if health > 1:
-		print("Tomato is abt to -1 health")
 		health -= 1
-		print("Tomato -1 health alr")
-		print("tomato health is:" , int(health))
+		print("Tomato took damage")
 	else:
 		queue_free()
