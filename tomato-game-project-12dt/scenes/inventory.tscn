@@ -1,10 +1,45 @@
 [gd_scene format=3 uid="uid://dc555lplhtj2k"]
 
 [ext_resource type="Script" uid="uid://foji51we880n" path="res://scripts/inventory.gd" id="1_qw0r6"]
+[ext_resource type="Texture2D" uid="uid://c4y6h13y3kitc" path="res://assets/mouth.png" id="2_hj2ta"]
 
-[node name="Control" type="Control" unique_id=211855216]
+[node name="inventory" type="Control" unique_id=211855216]
+custom_minimum_size = Vector2(400, 100)
 layout_mode = 3
-anchors_preset = 0
+anchor_left = 0.141
+anchor_top = 0.57500005
+anchor_right = 0.363
+anchor_bottom = 0.74100006
+offset_left = 439.52
+offset_top = 265.99997
+offset_right = 195.35999
+offset_bottom = 186.47998
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("1_qw0r6")
+
+[node name="Panel" type="Panel" parent="." unique_id=1932409035]
+layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
-script = ExtResource("1_qw0r6")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel" unique_id=1052244615]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureButton" type="TextureButton" parent="Panel/HBoxContainer" unique_id=846062736]
+layout_mode = 2
+texture_normal = ExtResource("2_hj2ta")
+
+[node name="TextureButton2" type="TextureButton" parent="Panel/HBoxContainer" unique_id=994808661]
+layout_mode = 2
+
+[node name="TextureButton3" type="TextureButton" parent="Panel/HBoxContainer" unique_id=907448081]
+layout_mode = 2
+
+[node name="TextureButton4" type="TextureButton" parent="Panel/HBoxContainer" unique_id=1283517897]
+layout_mode = 2
+
+[node name="TextureButton5" type="TextureButton" parent="Panel/HBoxContainer" unique_id=457522832]
+layout_mode = 2

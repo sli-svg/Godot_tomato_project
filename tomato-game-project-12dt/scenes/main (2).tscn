@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://85mvas8ctl6m" path="res://scenes/base_tomato.tscn" id="2_sugp2"]
 [ext_resource type="PackedScene" uid="uid://c5l1batkw5k2a" path="res://scenes/mutated_tomato.tscn" id="3_sugp2"]
 [ext_resource type="PackedScene" uid="uid://ce2sfutdbdln6" path="res://scenes/day_time_display.tscn" id="4_jyhfs"]
+[ext_resource type="PackedScene" uid="uid://dc555lplhtj2k" path="res://scenes/inventory.tscn" id="6_5kxsy"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tbgi4"]
 bg_color = Color(0.65663403, 0, 0.0858014, 1)
@@ -17,7 +18,7 @@ script = ExtResource("1_tbgi4")
 
 [node name="Player" parent="." unique_id=288673987 node_paths=PackedStringArray("health_ui") instance=ExtResource("1_o5qli")]
 position = Vector2(554, 238)
-health_ui = NodePath("../CanvasLayer/ProgressBar")
+health_ui = NodePath("../CanvasLayer/Control/ProgressBar")
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player" unique_id=864489997]
 visibility_layer = 5
@@ -32,11 +33,20 @@ position_smoothing_enabled = true
 position = Vector2(204, 216)
 
 [node name="mutated_tomato" parent="." unique_id=616097254 instance=ExtResource("3_sugp2")]
-position = Vector2(536, 188)
+position = Vector2(333, 223)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1178040648]
 
-[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer" unique_id=676651290]
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=1032621321]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/Control" unique_id=676651290]
+layout_mode = 0
 offset_left = 53.0
 offset_top = 44.0
 offset_right = 333.0
@@ -46,8 +56,20 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_tefeu")
 step = 1.0
 value = 100.0
 
-[node name="day_time_display" parent="CanvasLayer" unique_id=1737292908 instance=ExtResource("4_jyhfs")]
-offset_left = 350.83997
-offset_top = 63.0
-offset_right = 390.83997
-offset_bottom = 103.0
+[node name="day_time_display" parent="CanvasLayer/Control" unique_id=1737292908 instance=ExtResource("4_jyhfs")]
+layout_mode = 1
+anchor_left = 0.1670928
+anchor_top = 0.013117282
+anchor_right = 0.21943665
+anchor_bottom = 0.07839506
+offset_left = 1148.1212
+offset_top = 104.55556
+offset_right = 1188.1211
+offset_bottom = 144.55556
+
+[node name="inventory" parent="CanvasLayer/Control" unique_id=211855216 instance=ExtResource("6_5kxsy")]
+layout_mode = 1
+offset_left = 223.51999
+offset_top = 178.99997
+offset_right = 339.36
+offset_bottom = 159.47998

@@ -21,7 +21,7 @@ func _ready() -> void:
 	#so player can see the current growth stage of tomato immediately. 
 	$AnimationPlayer.play(str(growth_stage))
 
-func _physics_process(delta) -> void:
+func _physics_process(_delta) -> void:
 	if growth_stage >= 2:
 		chase_player = true
 		var direction = (player.global_position - global_position).normalized()
