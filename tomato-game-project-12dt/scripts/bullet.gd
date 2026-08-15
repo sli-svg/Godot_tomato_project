@@ -12,7 +12,7 @@ func _process(delta: float) -> void:
 	move_local_x(speed * delta)
 
 
-func _on_body_entered(body: Node2D) -> void:
+func _deal_damage(body: Node2D) -> void:
 	if body.is_in_group("enemy"):
 		body._take_damage()
 		queue_free()

@@ -41,7 +41,7 @@ func _on_timer_timeout() -> void:
 #
 
 
-func _damage_player(body: Node2D) -> void:
+func _deal_damage(body: Node2D) -> void:
 	print("player touched plant")
 	if body.is_in_group("player") and growth_stage >= dangerous_stage:
 		body._take_damage()

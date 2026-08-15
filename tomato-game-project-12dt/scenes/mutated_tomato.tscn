@@ -10,8 +10,6 @@ script/source = "extends CharacterBody2D
 @export var harvest_ready: bool = false
 @export var health: int = 10
 @export var dangerous_stage: int = 1
-@export var base_tomato: PackedScene
-@export var mutated_tomato: PackedScene
 
 
 @onready var player = get_tree().get_first_node_in_group(\"player\")
@@ -27,7 +25,7 @@ func _ready() -> void:
 	
 
 
-func _physics_process(delta) -> void:
+func _physics_process(_delta) -> void:
 	if growth_stage >= 1:
 		chase_player = true
 		var direction = (player.global_position - global_position).normalized()
@@ -44,7 +42,7 @@ func _on_timer_timeout() -> void:
 	$AnimationPlayer.play(str(growth_stage))
 
 
-func _damage_player(body: Node2D) -> void:
+func _deal_damage(body: Node2D) -> void:
 	print(\"player touched plant\")
 	if body.is_in_group(\"player\") and growth_stage >= dangerous_stage:
 		body._take_damage()
@@ -53,25 +51,10 @@ func _damage_player(body: Node2D) -> void:
 
 func _take_damage() -> void:
 	if health > 1:
-		print(\"Tomato is abt to -1 health\")
 		health -= 1
-		print(\"Tomato -1 health alr\")
 		print(\"tomato health is:\", int(health))
 	else:
 		queue_free()
-		
-func _input(event):
-	if event.is_action_pressed(\"plant\"):
-		plant_base_tomato()
-
-func plant_base_tomato():
-	var base_tomato = base_tomato.instantiate()
-
-	# Plant at the player's feet
-	base_tomato.global_position = global_position
-
-	# Add it to the world, not as a child of the player
-	get_parent().add_child(base_tomato)
 "
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0h1sb"]
@@ -431,4 +414,4 @@ rotation = 1.5707964
 shape = SubResource("CircleShape2D_0h1sb")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
-[connection signal="body_entered" from="Area2D" to="." method="_damage_player"]
+[connection signal="body_entered" from="Area2D" to="." method="_deal_damage"]
