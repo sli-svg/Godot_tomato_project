@@ -12,29 +12,37 @@ extends CharacterBody2D
 var speed: float = 300.0
 var health: int = 100
 var _can_shoot: bool = true
-var selected_seed: PackedScene
+var selected_seed: PackedScene = null
 
 
 func _ready() -> void:
 	if health_ui != null:
 		health_ui.max_value = health
 		health_ui.value = health
+	
+		print("PLAYER:", self)
 
 
 func _physics_process(_delta: float) -> void:
-	var direction: Vector2 = Vector2(0.0, 0.0)
+	var direction: Vector2 = Vector2.ZERO
+	
+	#Get movement input
 	direction.x = Input.get_axis("ui_left", "ui_right")
 	direction.y = Input.get_axis("ui_up", "ui_down")
 	
-	if Input.is_action_just_pressed("plant_seed"):
-		plant_seed()
-	
-	velocity = speed * direction.normalized()
-	
+	#Action input - shoot
 	if Input.is_action_pressed("ui_shoot") and _can_shoot:
 		_shoot()
 	
+	#Action input - plant seed. 
+	if Input.is_action_just_pressed("plant_seed"):
+		plant_seed(global_position)
+	
+	#Apply movement
+	velocity = speed * direction.normalized()
 	move_and_slide()
+	
+	
 
 
 func _shoot() -> void:
@@ -63,38 +71,31 @@ func _bullet_cooldown() -> void:
 	_can_shoot = true
 
 
-func _plant_seed() -> void:
-	pass
-	#check that the number of selected seed isnt 0.
-	
-func _input(event):
-	if event.is_action_pressed("plant"):
-		plant_base_tomato()
-
-func plant_base_tomato():
-	var tomato = base_tomato.instantiate()
-	# Plant at the player's feet
-	tomato.global_position = global_position
-	# Add it to the world, not as a child of the player
-	get_parent().add_child(tomato)
-
-
 func select_base_tomato() -> void:
+	print("Base tomato variable:", base_tomato)
 	selected_seed = base_tomato
+	print("Base tomato selected on:", self)
 
 
 func select_mutated_tomato() -> void:
+	print("Mutated tomato variable:", mutated_tomato)
 	selected_seed = mutated_tomato
+	print("Mutated tomato selected on:", self)
 
 
-func plant_seed() -> void:
+func plant_seed(plant_position: Vector2) -> void:
 	if selected_seed == null:
 		print("No seed selected!")
 		return
 	
+	print("selected seed:", selected_seed)
 	var tomato = selected_seed.instantiate()
-	# Plant at the player's feet
-	tomato.global_position = global_position
-	# Add it to the world, not as a child of the player
-	get_parent().add_child(tomato)
+	tomato.global_position = plant_position
+	get_tree().current_scene.add_child(tomato)
+
 	
+func _unhandled_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+			if selected_seed != null:
+				plant_seed(get_global_mouse_position())

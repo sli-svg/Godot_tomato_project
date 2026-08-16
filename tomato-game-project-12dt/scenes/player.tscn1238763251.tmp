@@ -3,8 +3,6 @@
 [ext_resource type="Script" uid="uid://2n2am7p7g0y3" path="res://scripts/player.gd" id="1_qhqgy"]
 [ext_resource type="PackedScene" uid="uid://dhltlki11k00p" path="res://scenes/bullet.tscn" id="2_dqkch"]
 [ext_resource type="Texture2D" uid="uid://bt7ai3vaw6o74" path="res://assets/Player 2.png" id="2_qhqgy"]
-[ext_resource type="PackedScene" uid="uid://85mvas8ctl6m" path="res://scenes/base_tomato.tscn" id="3_qlg0r"]
-[ext_resource type="PackedScene" uid="uid://c5l1batkw5k2a" path="res://scenes/mutated_tomato.tscn" id="4_tuyoq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qhqgy"]
 radius = 15.0
@@ -17,8 +15,6 @@ script = ExtResource("1_qhqgy")
 bullet_spawn = NodePath("Marker2D")
 bullet_scene = ExtResource("2_dqkch")
 bullet_timer = NodePath("Timer")
-base_tomato = ExtResource("3_qlg0r")
-mutated_tomato = ExtResource("4_tuyoq")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1590140056]
 texture = ExtResource("2_qhqgy")

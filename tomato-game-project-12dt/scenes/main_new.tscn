@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://dlpwb6qwrsxel"]
 
-[ext_resource type="PackedScene" uid="uid://6ir3y26n3qwl" path="res://scenes/player.tscn" id="1_o5qli"]
-[ext_resource type="Script" uid="uid://bnm7jxkwhl7df" path="res://scripts/main.gd" id="1_tbgi4"]
-[ext_resource type="PackedScene" uid="uid://85mvas8ctl6m" path="res://scenes/base_tomato.tscn" id="2_sugp2"]
-[ext_resource type="PackedScene" uid="uid://c5l1batkw5k2a" path="res://scenes/mutated_tomato.tscn" id="3_sugp2"]
-[ext_resource type="PackedScene" uid="uid://ce2sfutdbdln6" path="res://scenes/day_time_display.tscn" id="4_jyhfs"]
-[ext_resource type="PackedScene" uid="uid://dc555lplhtj2k" path="res://scenes/inventory.tscn" id="6_5kxsy"]
+[ext_resource type="Script" uid="uid://bnm7jxkwhl7df" path="res://scripts/main.gd" id="1_oah5t"]
+[ext_resource type="PackedScene" uid="uid://6ir3y26n3qwl" path="res://scenes/player.tscn" id="2_r8daj"]
+[ext_resource type="PackedScene" uid="uid://85mvas8ctl6m" path="res://scenes/base_tomato.tscn" id="3_sscae"]
+[ext_resource type="PackedScene" uid="uid://c5l1batkw5k2a" path="res://scenes/mutated_tomato.tscn" id="4_3jp6d"]
+[ext_resource type="PackedScene" uid="uid://ce2sfutdbdln6" path="res://scenes/day_time_display.tscn" id="5_41yrk"]
+[ext_resource type="PackedScene" uid="uid://dc555lplhtj2k" path="res://scenes/inventory.tscn" id="6_ee4fh"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tbgi4"]
 bg_color = Color(0.65663403, 0, 0.0858014, 1)
@@ -14,9 +14,9 @@ bg_color = Color(0.65663403, 0, 0.0858014, 1)
 bg_color = Color(1.6845763e-06, 0.6722109, 0.008094437, 1)
 
 [node name="Node2D" type="Node2D" unique_id=680051062]
-script = ExtResource("1_tbgi4")
+script = ExtResource("1_oah5t")
 
-[node name="Player" parent="." unique_id=288673987 node_paths=PackedStringArray("health_ui") instance=ExtResource("1_o5qli")]
+[node name="Player" parent="." unique_id=288673987 node_paths=PackedStringArray("health_ui") instance=ExtResource("2_r8daj")]
 position = Vector2(554, 238)
 health_ui = NodePath("../CanvasLayer/Control/ProgressBar")
 
@@ -29,10 +29,10 @@ remote_path = NodePath("../../Camera2D")
 position = Vector2(552, 241)
 position_smoothing_enabled = true
 
-[node name="base_tomato" parent="." unique_id=2062819230 instance=ExtResource("2_sugp2")]
+[node name="base_tomato" parent="." unique_id=2062819230 instance=ExtResource("3_sscae")]
 position = Vector2(204, 216)
 
-[node name="mutated_tomato" parent="." unique_id=616097254 instance=ExtResource("3_sugp2")]
+[node name="mutated_tomato" parent="." unique_id=616097254 instance=ExtResource("4_3jp6d")]
 position = Vector2(333, 223)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1178040648]
@@ -44,6 +44,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/Control" unique_id=676651290]
 layout_mode = 0
@@ -56,7 +57,7 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_tefeu")
 step = 1.0
 value = 100.0
 
-[node name="day_time_display" parent="CanvasLayer/Control" unique_id=1737292908 instance=ExtResource("4_jyhfs")]
+[node name="day_time_display" parent="CanvasLayer/Control" unique_id=1737292908 instance=ExtResource("5_41yrk")]
 layout_mode = 1
 anchor_left = 0.1670928
 anchor_top = 0.013117282
@@ -67,9 +68,17 @@ offset_top = 104.55556
 offset_right = 1188.1211
 offset_bottom = 144.55556
 
-[node name="inventory" parent="CanvasLayer/Control" unique_id=211855216 instance=ExtResource("6_5kxsy")]
+[node name="inventory" parent="CanvasLayer/Control" unique_id=211855216 node_paths=PackedStringArray("player") instance=ExtResource("6_ee4fh")]
 layout_mode = 1
-offset_left = 223.51999
-offset_top = 178.99997
-offset_right = 339.36
-offset_bottom = 159.47998
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.68700004
+anchor_right = 0.5
+anchor_bottom = 0.78300005
+offset_left = -200.0
+offset_top = 125.359985
+offset_right = 200.0
+offset_bottom = 156.23999
+grow_horizontal = 2
+grow_vertical = 0
+player = NodePath("../../../Player")
