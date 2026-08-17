@@ -56,6 +56,7 @@ func _shoot() -> void:
 	_can_shoot = false
 	bullet_timer.start()
 
+
 	
 func _take_damage() -> void:
 	if health > 1:
