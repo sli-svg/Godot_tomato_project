@@ -36,4 +36,5 @@ shape = SubResource("CircleShape2D_g2els")
 [node name="Timer" type="Timer" parent="." unique_id=831584495]
 wait_time = 0.3
 
+[connection signal="seed_planted" from="." to="." method="_on_seed_planted"]
 [connection signal="timeout" from="Timer" to="." method="_bullet_cooldown"]

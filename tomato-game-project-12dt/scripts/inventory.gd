@@ -18,28 +18,33 @@ var hotbar = [
 var items = {
 	"gun" : {
 		"name" : "Gun",
+		"category" : "Weapon",
 		"stackable" : false,
 		"quantity" : 1
 	},
 	"nuke" : {
 		"name" : "Nuke",
+		"category" : "Weapon",
 		"stackable" : false,
 		"quantity" : 1
 	},
 	"shovel" : {
 		"name" : "Shovel",
+		"category" : "Tool",
 		"stackable" : false,
 		"quantity" : 1
 	},
 	"base_tomato" : {
 		"name" : "Tomato Seed",
+		"category" : "Seed",
 		"stackable" : true,
-		"quantity" : 100
+		"quantity" : 10
 	},
 	"mutated_tomato" : {
 		"name" : "Mutated Tomato Seed",
+		"category" : "Seed",
 		"stackable" : true,
-		"quantity" : 100
+		"quantity" : 10
 	}
 }
 
@@ -50,8 +55,15 @@ func _ready() -> void:
 	base_button.pressed.connect(_on_base_tomato_pressed)
 	mutated_button.pressed.connect(_on_mutated_tomato_pressed)
 	
+	player = get_tree().current_scene.get_node("Player")
+	player.seed_planted.connect(_on_seed_planted)
+	
 	update_quantity_labels()
 
+
+func _on_seed_planted(seed_id: String) -> void:
+	items[seed_id]["quantity"] -= 1
+	update_quantity_labels()
 
 
 func _on_base_tomato_pressed() -> void:

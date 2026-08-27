@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+signal seed_planted(seed_id: String)
 
 @export var bullet_spawn: Marker2D
 @export var bullet_scene: PackedScene
@@ -13,6 +14,7 @@ var speed: float = 300.0
 var health: int = 100
 var _can_shoot: bool = true
 var selected_seed: PackedScene = null
+var selected_seed_id : String = ""
 
 
 func _ready() -> void:
@@ -75,12 +77,14 @@ func _bullet_cooldown() -> void:
 func select_base_tomato() -> void:
 	print("Base tomato variable:", base_tomato)
 	selected_seed = base_tomato
+	selected_seed_id = "base_tomato"
 	print("Base tomato selected on:", self)
 
 
 func select_mutated_tomato() -> void:
 	print("Mutated tomato variable:", mutated_tomato)
 	selected_seed = mutated_tomato
+	selected_seed_id = "mutated_tomato"
 	print("Mutated tomato selected on:", self)
 
 
@@ -89,10 +93,19 @@ func plant_seed(plant_position: Vector2) -> void:
 		print("No seed selected!")
 		return
 	
+	var inventory = get_tree().current_scene.get_node("CanvasLayer/Control/inventory")
+	
+	if inventory.items[selected_seed_id]["quantity"] <= 0:
+		print("No seeds left!")
+		return 
+	
 	print("selected seed:", selected_seed)
+	
 	var tomato = selected_seed.instantiate()
 	tomato.global_position = plant_position
 	get_tree().current_scene.add_child(tomato)
+	
+	seed_planted.emit(selected_seed_id)
 
 	
 func _unhandled_input(event: InputEvent) -> void:
@@ -100,3 +113,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 			if selected_seed != null:
 				plant_seed(get_global_mouse_position())
+
+
+func _on_seed_planted(seed_id: String) -> void:
+	pass # Replace with function body.
