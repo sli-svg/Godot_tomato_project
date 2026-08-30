@@ -107,13 +107,6 @@ func plant_seed(plant_position: Vector2) -> void:
 	
 	seed_planted.emit(selected_seed_id)
 
-#Before Removal: 
-func _unhandled_input(event: InputEvent) -> void:
-	if event is InputEventMouseButton:
-		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-			if selected_seed != null:
-				plant_seed(get_global_mouse_position())
-
 
 func _on_seed_planted(seed_id: String) -> void:
 	pass # Replace with function body.
