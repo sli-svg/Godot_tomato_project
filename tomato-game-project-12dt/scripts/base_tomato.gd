@@ -10,6 +10,10 @@ extends CharacterBody2D
 
 @export var age: int = 0
 
+#Strength of knockback 
+var knockback_strength: float = 300.0
+var knockback_time: float = 0.2
+var knockback_timer: float = 0.0
 
 var growth_stage: int = 0 
 var chase_player: bool = false
@@ -22,8 +26,16 @@ func _ready() -> void:
 	$AnimationPlayer.play(str(growth_stage))
 
 func _physics_process(_delta) -> void:
+	#If tomato had recently been knocked back,
+	#allow the knock back to happen again.
+	if knockback_timer > 0:
+		knockback_timer -= _delta
+		move_and_slide()
+		return
+	
 	if growth_stage >= 2:
 		chase_player = true
+		
 		var direction = (player.global_position - global_position).normalized()
 		velocity = direction * speed
 		move_and_slide()
@@ -43,9 +55,14 @@ func _on_timer_timeout() -> void:
 
 func _deal_damage(body: Node2D) -> void:
 	print("player touched plant")
+	
 	if body.is_in_group("player") and growth_stage >= dangerous_stage:
 		body._take_damage()
 		print("Player took damage")
+		
+		var knockback_direction = (global_position - body.global_position).normalized()
+		velocity = knockback_direction * knockback_strength
+		knockback_timer = knockback_time
 
 
 func _take_damage() -> void:
