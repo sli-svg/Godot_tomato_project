@@ -7,6 +7,7 @@ extends Control
 @onready var mutated_button: TextureButton = $Panel/HBoxContainer/TextureButton2
 @onready var mutated_quantity_label: Label = $Panel/HBoxContainer/TextureButton2/quantity_label2
 
+
 var hotbar = [
 	"gun",
 	"nuke",
@@ -68,7 +69,15 @@ func _on_seed_planted(seed_id: String) -> void:
 
 func _on_base_tomato_pressed() -> void:
 	print("BASE TOMATO BUTTON PRESSED")
+	
 	player.select_base_tomato()
+	
+	#Highlight base tomato button
+	base_button.modulate = Color(1.5, 1.5, 1.5)
+	
+	#Undo highlight on mutated tomato button
+	mutated_button.modulate = Color.WHITE
+	
 	print("PLAYER REFERENCE:", player)
 	print("SELECTED SEED:", player.selected_seed)
 
@@ -78,7 +87,15 @@ func _on_base_tomato_pressed() -> void:
 
 func _on_mutated_tomato_pressed() -> void:
 	print("MUTATED TOMATO BUTTON PRESSED")
+	
 	player.select_mutated_tomato()
+	
+	#Highlight mutated tomato button
+	mutated_button.modulate = Color(1.5, 1.5, 1.5)
+	
+	#Undo highlight on base tomato button
+	base_button.modulate = Color.WHITE
+	
 	print("PLAYER REFERENCE:", player)
 	print("SELECTED SEED:", player.selected_seed)
 

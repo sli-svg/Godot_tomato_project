@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-signal seed_planted(seed_id: String)
+signal seed_planted(_seed_id: String)
 
 @export var bullet_spawn: Marker2D
 @export var bullet_scene: PackedScene
