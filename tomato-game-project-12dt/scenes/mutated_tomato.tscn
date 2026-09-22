@@ -5,10 +5,11 @@
 [sub_resource type="GDScript" id="GDScript_6t0ye"]
 script/source = "extends CharacterBody2D
 
+@export_enum(\"normal\", \"mutated\") var tomato_type: String = \"mutated\"
 
 @export var amount: int = 2
 @export var harvest_ready: bool = false
-@export var health: int = 10
+@export var health: int = 5
 @export var dangerous_stage: int = 1
 
 
@@ -23,10 +24,14 @@ var growth_stage: int = 0
 var chase_player: bool = false
 var speed: int = 50
 
+var being_harvested: bool = false
+
 
 func _ready() -> void:
+	#Starts plant's current growth animation when it first appears in the game, 
+	#so player can see the current growth stage of tomato immediately. 
 	$AnimationPlayer.play(str(growth_stage))
-	
+	add_to_group(\"Tomato\")
 
 
 func _physics_process(_delta) -> void:
@@ -36,9 +41,19 @@ func _physics_process(_delta) -> void:
 		knockback_timer -= _delta
 		move_and_slide()
 		return
+		
+	# Don't move while the player is harvesting this tomato
+	if being_harvested:
+		velocity = Vector2.ZERO
+		return
+	
+	if growth_stage >=1:
+		harvest_ready = true
 	
 	if growth_stage >= 1:
 		chase_player = true
+		
+	
 		var direction = (player.global_position - global_position).normalized()
 		velocity = direction * speed
 		move_and_slide()
@@ -72,10 +87,6 @@ func _take_damage() -> void:
 		queue_free()
 "
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0h1sb"]
-radius = 11.0
-height = 32.0
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0h1sb"]
 size = Vector2(12, 1)
 
@@ -84,7 +95,8 @@ radius = 13.0
 
 [sub_resource type="Animation" id="Animation_8cebs"]
 resource_name = "0"
-length = 5.0
+length = 20.0
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -205,6 +217,10 @@ tracks/9/keys = {
 "transitions": PackedFloat32Array(),
 "values": []
 }
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0h1sb"]
+radius = 11.0
+height = 32.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8cebs"]
 radius = 13.0
@@ -401,19 +417,19 @@ _data = {
 &"RESET": SubResource("Animation_0xh3d")
 }
 
-[node name="Node2D2" type="CharacterBody2D" unique_id=1171502064 groups=["enemy"]]
+[node name="Node2D2" type="CharacterBody2D" unique_id=1171502064 groups=["Tomato", "enemy"]]
 script = SubResource("GDScript_6t0ye")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1273113702]
-position = Vector2(-1, -11)
+position = Vector2(-0.5000002, -6)
 rotation = 1.5707964
-shape = SubResource("CapsuleShape2D_0h1sb")
+shape = SubResource("RectangleShape2D_0h1sb")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=507147807]
-position = Vector2(-1, -14)
+position = Vector2(-1, -9)
 texture = ExtResource("1_0h1sb")
 region_enabled = true
-region_rect = Rect2(32, 56, 40, 32)
+region_rect = Rect2(32, 32, 40, 24)
 
 [node name="Timer" type="Timer" parent="." unique_id=623454707]
 

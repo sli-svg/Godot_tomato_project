@@ -13,7 +13,7 @@ radius = 13.0
 
 [sub_resource type="Animation" id="Animation_d1i32"]
 resource_name = "0"
-length = 5.0
+length = 20.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -133,7 +133,7 @@ height = 34.0
 
 [sub_resource type="Animation" id="Animation_xcms5"]
 resource_name = "1"
-length = 10.0
+length = 20.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -516,7 +516,7 @@ _data = {
 &"RESET": SubResource("Animation_nfoc4")
 }
 
-[node name="base_tomato" type="CharacterBody2D" unique_id=1795498286 groups=["enemy"]]
+[node name="base_tomato" type="CharacterBody2D" unique_id=1795498286 groups=["enemy", "tomato"]]
 script = ExtResource("1_vv46m")
 
 [node name="solid_collision" type="CollisionShape2D" parent="." unique_id=39917096]
@@ -533,7 +533,7 @@ region_rect = Rect2(0, 56, 32, 32)
 [node name="Timer" type="Timer" parent="." unique_id=1784133535]
 one_shot = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1974893237]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1974893237 groups=["enemy"]]
 root_node = NodePath("../Timer")
 libraries/ = SubResource("AnimationLibrary_vv46m")
 

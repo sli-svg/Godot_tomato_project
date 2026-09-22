@@ -6,6 +6,7 @@ extends Control
 @onready var base_quantity_label: Label = $Panel/HBoxContainer/TextureButton/quantity_label
 @onready var mutated_button: TextureButton = $Panel/HBoxContainer/TextureButton2
 @onready var mutated_quantity_label: Label = $Panel/HBoxContainer/TextureButton2/quantity_label2
+@onready var shovel_button: TextureButton = $Panel/HBoxContainer/TextureButton3
 
 
 var hotbar = [
@@ -39,13 +40,13 @@ var items = {
 		"name" : "Tomato Seed",
 		"category" : "Seed",
 		"stackable" : true,
-		"quantity" : 10
+		"quantity" : 100
 	},
 	"mutated_tomato" : {
 		"name" : "Mutated Tomato Seed",
 		"category" : "Seed",
 		"stackable" : true,
-		"quantity" : 10
+		"quantity" : 100
 	}
 }
 
@@ -57,13 +58,10 @@ func _ready() -> void:
 	mutated_button.pressed.connect(_on_mutated_tomato_pressed)
 	
 	player = get_tree().current_scene.get_node("Player")
-	player.seed_planted.connect(_on_seed_planted)
 	
-	update_quantity_labels()
-
-
-func _on_seed_planted(seed_id: String) -> void:
-	items[seed_id]["quantity"] -= 1
+	player.seed_planted.connect(_on_seed_planted)
+	player.tomato_harvested.connect(_on_tomato_harvested)
+	
 	update_quantity_labels()
 
 
@@ -102,7 +100,38 @@ func _on_mutated_tomato_pressed() -> void:
 	base_button.button_pressed = false
 	mutated_button.button_pressed = true
 
-	
+
+func _on_seed_planted(seed_id: String) -> void:
+	items[seed_id]["quantity"] -= 1
+	update_quantity_labels()
+
+
 func update_quantity_labels() -> void:
-	base_quantity_label.text = str(items["base_tomato"]["quantity"])
-	mutated_quantity_label.text = str(items["mutated_tomato"]["quantity"])
+	for item_id in items:
+		if item_id == "base_tomato":
+			base_quantity_label.text = str(items["base_tomato"]["quantity"])
+		elif item_id == "mutated_tomato":
+			mutated_quantity_label.text = str(items["mutated_tomato"]["quantity"])
+
+
+func _on_tomato_harvested(tomato_id: String) -> void:
+	items[tomato_id]["quantity"] += 3
+	update_quantity_labels()
+	
+	print("Added 3 ", tomato_id, " seeds")
+	print("Harvested:", tomato_id)
+	print("New quantity:", items[tomato_id]["quantity"])
+
+
+func _on_shovel_pressed() -> void:
+	print("SHOVEL BUTTON PRESSED")
+	player.select_shovel()
+	
+	# Highlight shovel
+	shovel_button.modulate = Color(1.5, 1.5, 1.5)
+	
+	# Unhighlight seeds
+	base_button.modulate = Color.WHITE
+	mutated_button.modulate = Color.WHITE
+	
+	print("SELECTED ITEM: SHOVEL")

@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://2mr65ietksee" path="res://assets/mutated_tomato_seed_png.png" id="3_53g1v"]
 [ext_resource type="Texture2D" uid="uid://dgl5hi313xqn0" path="res://assets/normal_tomato_seed_pressed.png" id="3_yyk2a"]
 [ext_resource type="Texture2D" uid="uid://cc5qceg0omgda" path="res://assets/mutated_tomato_seed_pressed.png" id="5_uae8j"]
+[ext_resource type="Texture2D" uid="uid://bt7ai3vaw6o74" path="res://assets/Player 2.png" id="6_uae8j"]
 
 [node name="inventory" type="Control" unique_id=211855216]
 custom_minimum_size = Vector2(400, 100)
@@ -17,8 +18,8 @@ script = ExtResource("1_qw0r6")
 
 [node name="Panel" type="Panel" parent="." unique_id=1932409035]
 layout_mode = 0
-offset_right = 107.0
-offset_bottom = 29.0
+offset_right = 140.0
+offset_bottom = 50.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel" unique_id=1052244615]
 layout_mode = 0
@@ -33,8 +34,9 @@ texture_pressed = ExtResource("3_yyk2a")
 
 [node name="quantity_label" type="Label" parent="Panel/HBoxContainer/TextureButton" unique_id=409960166]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+offset_top = 23.0
+offset_right = 21.0
+offset_bottom = 46.0
 text = "10"
 
 [node name="TextureButton2" type="TextureButton" parent="Panel/HBoxContainer" unique_id=994808661]
@@ -45,12 +47,38 @@ texture_pressed = ExtResource("5_uae8j")
 
 [node name="quantity_label2" type="Label" parent="Panel/HBoxContainer/TextureButton2" unique_id=467782042]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+offset_top = 23.0
+offset_right = 21.0
+offset_bottom = 46.0
 text = "10"
 
 [node name="TextureButton3" type="TextureButton" parent="Panel/HBoxContainer" unique_id=907448081]
 layout_mode = 2
+texture_normal = ExtResource("6_uae8j")
+
+[node name="off" type="Label" parent="Panel/HBoxContainer/TextureButton3" unique_id=279446131]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.767
+anchor_right = 1.133
+anchor_bottom = 1.5330001
+offset_top = 6.99
+offset_right = -10.990002
+offset_bottom = 7.0099983
+text = "off"
+
+[node name="on" type="Label" parent="Panel/HBoxContainer/TextureButton3" unique_id=755026162]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.767
+anchor_right = 1.133
+anchor_bottom = 1.5330001
+offset_top = 6.99
+offset_right = -10.990002
+offset_bottom = 7.0099983
+text = "on"
 
 [node name="TextureButton4" type="TextureButton" parent="Panel/HBoxContainer" unique_id=1283517897]
 layout_mode = 2
@@ -60,3 +88,4 @@ layout_mode = 2
 
 [connection signal="pressed" from="Panel/HBoxContainer/TextureButton" to="." method="_on_base_tomato_pressed"]
 [connection signal="pressed" from="Panel/HBoxContainer/TextureButton2" to="." method="_on_mutated_tomato_pressed"]
+[connection signal="pressed" from="Panel/HBoxContainer/TextureButton3" to="." method="_on_shovel_pressed"]

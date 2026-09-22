@@ -16,7 +16,7 @@ func _ready() -> void:
 func _refresh_display():
 	#date_label.text = "Day " + _add_zero(current_date.day)
 	date_label.text = "Day " + str(days)
-	time_label.text = "hour " + str(hours)
+	time_label.text = "Hour " + str(hours)
 	
 func _add_zero(number):
 	if number < 10:

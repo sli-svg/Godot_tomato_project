@@ -1,9 +1,10 @@
 extends CharacterBody2D
 
+@export_enum("normal", "mutated") var tomato_type: String = "normal"
 
 @export var amount: int = 2
 @export var harvest_ready: bool = false
-@export var health: int = 10
+@export var health: int = 5
 @export var dangerous_stage: int = 2
 
 @onready var player = get_tree().get_first_node_in_group("player")
@@ -14,25 +15,35 @@ extends CharacterBody2D
 var knockback_strength: float = 300.0
 var knockback_time: float = 0.2
 var knockback_timer: float = 0.0
-
+ 
 var growth_stage: int = 0 
 var chase_player: bool = false
 var speed: int = 50
+
+var being_harvested: bool = false
 
 
 func _ready() -> void:
 	#Starts plant's current growth animation when it first appears in the game, 
 	#so player can see the current growth stage of tomato immediately. 
 	$AnimationPlayer.play(str(growth_stage))
+	add_to_group("Tomato")
 
 func _physics_process(_delta) -> void:
-	#If tomato had recently been knocked back,
-	#allow the knock back to happen again.
+	#Allow multiple knockbacks in a short amount of time
 	if knockback_timer > 0:
 		knockback_timer -= _delta
 		move_and_slide()
 		return
+		
+	# Don't move while the player is harvesting this tomato
+	if being_harvested:
+		velocity = Vector2.ZERO
+		return
 	
+	if growth_stage >=1:
+		harvest_ready = true
+
 	if growth_stage >= 2:
 		chase_player = true
 		

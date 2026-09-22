@@ -24,16 +24,19 @@ metadata/_edit_use_anchors_ = true
 layout_mode = 2
 size_flags_horizontal = 0
 
-[node name="Button" type="Button" parent="PanelContainer/VBoxContainer" unique_id=1012863806]
-layout_mode = 2
-text = " temporary replacement"
-
-[node name="Button2" type="Button" parent="PanelContainer/VBoxContainer" unique_id=956596828]
-layout_mode = 2
-text = "temporary replacement"
-
 [node name="back_button" type="Button" parent="PanelContainer/VBoxContainer" unique_id=1733199774]
 layout_mode = 2
 text = "back"
+
+[node name="Label" type="Label" parent="." unique_id=943167759]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 11.400001
+anchor_top = 9.8
+anchor_right = 20.475
+anchor_bottom = 10.375001
+offset_left = -3.0517578e-05
+offset_bottom = -3.0517578e-05
+text = "Uh oh... someone forgot to add the options. 😅"
 
 [connection signal="pressed" from="PanelContainer/VBoxContainer/back_button" to="." method="_on_back_button_pressed"]

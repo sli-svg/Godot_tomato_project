@@ -6,6 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://c5l1batkw5k2a" path="res://scenes/mutated_tomato.tscn" id="4_3jp6d"]
 [ext_resource type="PackedScene" uid="uid://ce2sfutdbdln6" path="res://scenes/day_time_display.tscn" id="5_41yrk"]
 [ext_resource type="PackedScene" uid="uid://dc555lplhtj2k" path="res://scenes/inventory.tscn" id="6_ee4fh"]
+[ext_resource type="Texture2D" uid="uid://c4y6h13y3kitc" path="res://assets/mouth.png" id="7_r8daj"]
+[ext_resource type="Script" uid="uid://doigasr0i1ymo" path="res://pause_button.gd" id="8_sscae"]
+[ext_resource type="PackedScene" uid="uid://cx17j4q0qkahx" path="res://scenes/pause_menu.tscn" id="9_3jp6d"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tbgi4"]
 bg_color = Color(0.65663403, 0, 0.0858014, 1)
@@ -18,7 +21,7 @@ script = ExtResource("1_oah5t")
 
 [node name="Player" parent="." unique_id=288673987 node_paths=PackedStringArray("health_ui") instance=ExtResource("2_r8daj")]
 position = Vector2(554, 238)
-health_ui = NodePath("../CanvasLayer/Control/ProgressBar")
+health_ui = NodePath("../CanvasLayer/Control/player_health")
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player" unique_id=864489997]
 visibility_layer = 5
@@ -46,7 +49,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/Control" unique_id=676651290]
+[node name="player_health" type="ProgressBar" parent="CanvasLayer/Control" unique_id=676651290]
 layout_mode = 0
 offset_left = 53.0
 offset_top = 44.0
@@ -63,10 +66,10 @@ anchor_left = 0.1670928
 anchor_top = 0.013117282
 anchor_right = 0.21943665
 anchor_bottom = 0.07839506
-offset_left = 1148.1212
-offset_top = 104.55556
-offset_right = 1188.1211
-offset_bottom = 144.55556
+offset_left = 498.12122
+offset_top = 61.555557
+offset_right = 495.1211
+offset_bottom = 41.555557
 
 [node name="inventory" parent="CanvasLayer/Control" unique_id=211855216 node_paths=PackedStringArray("player") instance=ExtResource("6_ee4fh")]
 layout_mode = 1
@@ -82,3 +85,22 @@ offset_bottom = 156.23999
 grow_horizontal = 2
 grow_vertical = 0
 player = NodePath("../../../Player")
+
+[node name="pause_button" type="TextureButton" parent="CanvasLayer/Control" unique_id=811576991]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.8880001
+anchor_right = 1.01
+anchor_bottom = 0.061000004
+offset_left = 0.35986328
+offset_right = -35.80005
+offset_bottom = 76.08
+texture_normal = ExtResource("7_r8daj")
+script = ExtResource("8_sscae")
+
+[node name="pause_menu" parent="CanvasLayer/Control" unique_id=1634844986 instance=ExtResource("9_3jp6d")]
+process_mode = 3
+visible = false
+layout_mode = 0
+
+[connection signal="pressed" from="CanvasLayer/Control/pause_button" to="CanvasLayer/Control/pause_menu" method="_on_pause_button_pressed"]
