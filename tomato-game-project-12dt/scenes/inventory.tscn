@@ -5,7 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://2mr65ietksee" path="res://assets/mutated_tomato_seed_png.png" id="3_53g1v"]
 [ext_resource type="Texture2D" uid="uid://dgl5hi313xqn0" path="res://assets/normal_tomato_seed_pressed.png" id="3_yyk2a"]
 [ext_resource type="Texture2D" uid="uid://cc5qceg0omgda" path="res://assets/mutated_tomato_seed_pressed.png" id="5_uae8j"]
-[ext_resource type="Texture2D" uid="uid://bt7ai3vaw6o74" path="res://assets/Player 2.png" id="6_uae8j"]
+[ext_resource type="Texture2D" uid="uid://b5plbpflikntc" path="res://assets/shovel1.png" id="6_s887n"]
+[ext_resource type="Texture2D" uid="uid://cqe0km01ixlnq" path="res://assets/shovel.png" id="6_uae8j"]
 
 [node name="inventory" type="Control" unique_id=211855216]
 custom_minimum_size = Vector2(400, 100)
@@ -54,7 +55,8 @@ text = "10"
 
 [node name="TextureButton3" type="TextureButton" parent="Panel/HBoxContainer" unique_id=907448081]
 layout_mode = 2
-texture_normal = ExtResource("6_uae8j")
+texture_normal = ExtResource("6_s887n")
+texture_pressed = ExtResource("6_uae8j")
 
 [node name="off" type="Label" parent="Panel/HBoxContainer/TextureButton3" unique_id=279446131]
 visible = false
