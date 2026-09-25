@@ -11,16 +11,12 @@ signal tomato_harvested(_tomato_id: String)
 @export var base_tomato: PackedScene
 @export var mutated_tomato: PackedScene
 
+@export var nuke_scene: PackedScene
+
 @export var harvest_range: float = 100.0
 @export var harvest_time: float = 3.0
 
 @onready var harvest_radius: Line2D = $harvest_radius
-
-@export var nuke_scene: PackedScene
-@export var nuke_radius: float = 200.0
-
-var nuke_preview: Node2D = null
-var placed_nuke: Node2D = null
 
 var harvesting: bool = false
 var harvest_target: Node2D = null
@@ -34,6 +30,11 @@ var selected_seed: PackedScene = null
 var selected_seed_id : String = ""
 
 var selected_item: String = ""
+
+var nuke_placed: bool = false
+var nuke: Node2D = null
+
+
 
 func _ready() -> void:
 	if health_ui != null:
@@ -71,6 +72,10 @@ func _physics_process(delta: float) -> void:
 	if selected_item == "gun":
 		_shoot()
 	
+	# Nuke
+	if selected_item == "nuke":
+		nuke_preview()
+	
 	# Apply movement
 	velocity = speed * direction.normalized()
 	move_and_slide()
@@ -101,8 +106,12 @@ func _take_damage() -> void:
 		health_ui.value = health
 		print("Player took damage")
 	else:
-		get_tree().call_deferred("reload_current_scene")
-		# change this later
+		die()
+
+
+func die() -> void:
+	print("PLAYER DIED")
+	get_tree().call_deferred("reload_current_scene")
 
 
 func _bullet_cooldown() -> void:
@@ -285,4 +294,24 @@ func reset_harvest() -> void:
 	harvesting = false
 	
 	print("HARVEST RESET! harvesting =", harvesting)
+
+
+func nuke_preview() -> void:
+	if nuke == null:
+		nuke = nuke_scene.instantiate()
+		get_tree().current_scene.add_child(nuke)
+
+	if not nuke_placed:
+		nuke.global_position = get_global_mouse_position()
+
+		if Input.is_action_just_pressed("place_nuke"):
+			nuke_placed = true
+			nuke.placed = true
+			print("NUKE PLACED")
 	
+	if nuke_placed:
+		if Input.is_action_just_pressed("detonate_nuke"):
+			nuke.detonate()
+			nuke = null
+			nuke_placed = false
+			selected_item = ""

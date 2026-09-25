@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bt7ai3vaw6o74" path="res://assets/Player 2.png" id="2_qhqgy"]
 [ext_resource type="PackedScene" uid="uid://85mvas8ctl6m" path="res://scenes/base_tomato.tscn" id="3_qlg0r"]
 [ext_resource type="PackedScene" uid="uid://c5l1batkw5k2a" path="res://scenes/mutated_tomato.tscn" id="4_tuyoq"]
+[ext_resource type="PackedScene" uid="uid://vppa231fvhn8" path="res://scenes/nuke.tscn" id="5_fjrip"]
 [ext_resource type="Script" uid="uid://dbwynq71r06xj" path="res://scripts/harvest_radius.gd" id="6_tuyoq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qhqgy"]
@@ -20,6 +21,7 @@ bullet_scene = ExtResource("2_dqkch")
 bullet_timer = NodePath("Timer")
 base_tomato = ExtResource("3_qlg0r")
 mutated_tomato = ExtResource("4_tuyoq")
+nuke_scene = ExtResource("5_fjrip")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1590140056]
 texture = ExtResource("2_qhqgy")
