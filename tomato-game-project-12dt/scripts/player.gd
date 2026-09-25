@@ -33,10 +33,10 @@ func _ready() -> void:
 	if health_ui != null:
 		health_ui.max_value = health
 		health_ui.value = health
-	
+		
 		print("PLAYER:", self)
 	
-	#Harvest radius
+	# Harvest radius
 	print(harvest_radius)
 	harvest_radius.radius = harvest_range
 	harvest_radius.create_circle()
@@ -46,15 +46,14 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	var direction: Vector2 = Vector2.ZERO
 	
-	#Get movement input
+	# Get movement input
 	direction.x = Input.get_axis("ui_left", "ui_right")
 	direction.y = Input.get_axis("ui_up", "ui_down")
 	
-	#Action input - shoot
+	# Handle player actions
 	if Input.is_action_pressed("ui_shoot") and _can_shoot:
 		_shoot()
 	
-	#Action input - plant seed. 
 	if Input.is_action_just_pressed("plant_seed"):
 		plant_seed(global_position)
 	
@@ -64,12 +63,12 @@ func _physics_process(delta: float) -> void:
 	else:
 		reset_harvest()
 	
-	#Apply movement
+	# Apply movement
 	velocity = speed * direction.normalized()
 	move_and_slide()
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	update_harvest_target()
 
 
@@ -93,7 +92,7 @@ func _take_damage() -> void:
 		print("Player took damage")
 	else:
 		get_tree().call_deferred("reload_current_scene")
-		#change this later
+		# change this later
 
 
 func _bullet_cooldown() -> void:
@@ -119,11 +118,11 @@ func select_mutated_tomato() -> void:
 func select_shovel() -> void:
 	selected_item = "shovel"
 
-	# Make sure a seed isn't still selected
+	# Deselect seed
 	selected_seed = null
 	selected_seed_id = ""
 
-	print("Selected shovel")
+	print("Shovel selected")
 
 
 func plant_seed(plant_position: Vector2) -> void:
@@ -186,10 +185,7 @@ func handle_harvesting(delta: float) -> void:
 		reset_harvest()
 		return
 
-	if harvest_target == null:
-		return
-
-	#Check distance from player to tomato
+	# Check distance from player to tomato
 	var distance := global_position.distance_to(harvest_target.global_position)
 
 	if distance > harvest_range:
@@ -223,7 +219,7 @@ func harvest_tomato() -> void:
 		reset_harvest()
 		return
 		
-	#Final distance check
+	# Final distance check
 	var distance := global_position.distance_to(tomato.global_position)
 	
 	if distance > harvest_range:
@@ -257,4 +253,6 @@ func reset_harvest() -> void:
 	harvest_target = null
 	harvest_progress = 0.0
 	harvesting = false
+	
+	print("HARVEST RESET! harvesting =", harvesting)
 	

@@ -1,15 +1,10 @@
 extends Area2D
 
-var speed: float = 1300.0
+const SPEED: float = 1300.0
 
 
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	move_local_x(speed * delta)
+	move_local_x(SPEED * delta)
 
 
 func _deal_damage(body: Node2D) -> void:

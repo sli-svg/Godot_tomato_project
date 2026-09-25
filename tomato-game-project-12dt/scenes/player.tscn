@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bt7ai3vaw6o74" path="res://assets/Player 2.png" id="2_qhqgy"]
 [ext_resource type="PackedScene" uid="uid://85mvas8ctl6m" path="res://scenes/base_tomato.tscn" id="3_qlg0r"]
 [ext_resource type="PackedScene" uid="uid://c5l1batkw5k2a" path="res://scenes/mutated_tomato.tscn" id="4_tuyoq"]
-[ext_resource type="Script" uid="uid://dbwynq71r06xj" path="res://scenes/harvest_radius.gd" id="6_tuyoq"]
+[ext_resource type="Script" uid="uid://dbwynq71r06xj" path="res://scripts/harvest_radius.gd" id="6_tuyoq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qhqgy"]
 radius = 15.0
