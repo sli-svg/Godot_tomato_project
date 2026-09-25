@@ -51,9 +51,6 @@ func _physics_process(delta: float) -> void:
 	direction.y = Input.get_axis("ui_up", "ui_down")
 	
 	# Handle player actions
-	if Input.is_action_pressed("ui_shoot") and _can_shoot:
-		_shoot()
-	
 	if Input.is_action_just_pressed("plant_seed"):
 		plant_seed(global_position)
 	
@@ -62,6 +59,10 @@ func _physics_process(delta: float) -> void:
 		handle_harvesting(delta)
 	else:
 		reset_harvest()
+	
+	# Shoot
+	if selected_item == "gun":
+		_shoot()
 	
 	# Apply movement
 	velocity = speed * direction.normalized()
@@ -73,18 +74,25 @@ func _process(_delta: float) -> void:
 
 
 func _shoot() -> void:
+	if not Input.is_action_just_pressed("ui_shoot"):
+		return
+
+	if not _can_shoot:
+		return
+
 	var bullet = bullet_scene.instantiate()
-	
-	bullet.global_position = bullet_spawn.global_position 
-	bullet.rotation = (get_global_mouse_position()-bullet.global_position).angle()
-	
-	add_sibling(bullet)
-	
+
+	bullet.global_position = bullet_spawn.global_position
+	bullet.rotation = (
+		get_global_mouse_position() - bullet.global_position
+	).angle()
+
+	get_tree().current_scene.add_child(bullet)
+
 	_can_shoot = false
 	bullet_timer.start()
 
 
-	
 func _take_damage() -> void:
 	if health > 1:
 		health -= 1
@@ -123,6 +131,16 @@ func select_shovel() -> void:
 	selected_seed_id = ""
 
 	print("Shovel selected")
+
+
+func select_gun() -> void:
+	selected_item = "gun"
+
+	# Deselect seed
+	selected_seed = null
+	selected_seed_id = ""
+
+	print("Gun selected")
 
 
 func plant_seed(plant_position: Vector2) -> void:

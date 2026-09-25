@@ -5,8 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://2mr65ietksee" path="res://assets/mutated_tomato_seed_png.png" id="3_53g1v"]
 [ext_resource type="Texture2D" uid="uid://dgl5hi313xqn0" path="res://assets/normal_tomato_seed_pressed.png" id="3_yyk2a"]
 [ext_resource type="Texture2D" uid="uid://cc5qceg0omgda" path="res://assets/mutated_tomato_seed_pressed.png" id="5_uae8j"]
-[ext_resource type="Texture2D" uid="uid://b5plbpflikntc" path="res://assets/shovel1.png" id="6_s887n"]
-[ext_resource type="Texture2D" uid="uid://cqe0km01ixlnq" path="res://assets/shovel.png" id="6_uae8j"]
+[ext_resource type="Texture2D" uid="uid://reg60h3yxkfd" path="res://assets/shovel_3.png" id="6_s887n"]
+[ext_resource type="Texture2D" uid="uid://cyu8g7wlwjs65" path="res://assets/gun_3.png" id="7_s887n"]
 
 [node name="inventory" type="Control" unique_id=211855216]
 custom_minimum_size = Vector2(400, 100)
@@ -18,20 +18,24 @@ mouse_filter = 2
 script = ExtResource("1_qw0r6")
 
 [node name="Panel" type="Panel" parent="." unique_id=1932409035]
+custom_minimum_size = Vector2(400, 60)
 layout_mode = 0
 offset_right = 140.0
 offset_bottom = 50.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel" unique_id=1052244615]
+custom_minimum_size = Vector2(400, 60)
 layout_mode = 0
 offset_right = 107.0
 offset_bottom = 29.0
 
 [node name="TextureButton" type="TextureButton" parent="Panel/HBoxContainer" unique_id=846062736]
 layout_mode = 2
+size_flags_horizontal = 3
 toggle_mode = true
 texture_normal = ExtResource("2_ty45s")
 texture_pressed = ExtResource("3_yyk2a")
+stretch_mode = 0
 
 [node name="quantity_label" type="Label" parent="Panel/HBoxContainer/TextureButton" unique_id=409960166]
 layout_mode = 0
@@ -42,9 +46,11 @@ text = "10"
 
 [node name="TextureButton2" type="TextureButton" parent="Panel/HBoxContainer" unique_id=994808661]
 layout_mode = 2
+size_flags_horizontal = 3
 toggle_mode = true
 texture_normal = ExtResource("3_53g1v")
 texture_pressed = ExtResource("5_uae8j")
+stretch_mode = 0
 
 [node name="quantity_label2" type="Label" parent="Panel/HBoxContainer/TextureButton2" unique_id=467782042]
 layout_mode = 0
@@ -55,8 +61,9 @@ text = "10"
 
 [node name="TextureButton3" type="TextureButton" parent="Panel/HBoxContainer" unique_id=907448081]
 layout_mode = 2
+size_flags_horizontal = 3
 texture_normal = ExtResource("6_s887n")
-texture_pressed = ExtResource("6_uae8j")
+stretch_mode = 0
 
 [node name="off" type="Label" parent="Panel/HBoxContainer/TextureButton3" unique_id=279446131]
 visible = false
@@ -84,6 +91,9 @@ text = "on"
 
 [node name="TextureButton4" type="TextureButton" parent="Panel/HBoxContainer" unique_id=1283517897]
 layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("7_s887n")
+stretch_mode = 0
 
 [node name="TextureButton5" type="TextureButton" parent="Panel/HBoxContainer" unique_id=457522832]
 layout_mode = 2
@@ -91,3 +101,4 @@ layout_mode = 2
 [connection signal="pressed" from="Panel/HBoxContainer/TextureButton" to="." method="_on_base_tomato_pressed"]
 [connection signal="pressed" from="Panel/HBoxContainer/TextureButton2" to="." method="_on_mutated_tomato_pressed"]
 [connection signal="pressed" from="Panel/HBoxContainer/TextureButton3" to="." method="_on_shovel_pressed"]
+[connection signal="pressed" from="Panel/HBoxContainer/TextureButton4" to="." method="_on_gun_pressed"]

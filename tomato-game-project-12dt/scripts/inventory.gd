@@ -5,6 +5,7 @@ extends Control
 @onready var base_button: TextureButton = $Panel/HBoxContainer/TextureButton
 @onready var mutated_button: TextureButton = $Panel/HBoxContainer/TextureButton2
 @onready var shovel_button: TextureButton = $Panel/HBoxContainer/TextureButton3
+@onready var gun_button: TextureButton = $Panel/HBoxContainer/TextureButton4
 
 @onready var base_quantity_label: Label = (
 	$Panel/HBoxContainer/TextureButton/quantity_label
@@ -44,13 +45,13 @@ var items = {
 		"name": "Tomato Seed",
 		"category": "Seed",
 		"stackable": true,
-		"quantity": 100,
+		"quantity": 5,
 	},
 	"mutated_tomato": {
 		"name": "Mutated Tomato Seed",
 		"category": "Seed",
 		"stackable": true,
-		"quantity": 100,
+		"quantity": 5,
 	},
 }
 
@@ -60,6 +61,7 @@ func _ready() -> void:
 	base_button.pressed.connect(_on_base_tomato_pressed)
 	mutated_button.pressed.connect(_on_mutated_tomato_pressed)
 	shovel_button.pressed.connect(_on_shovel_pressed)
+	gun_button.pressed.connect(_on_gun_pressed)
 	
 	player = get_tree().current_scene.get_node("Player")
 	
@@ -125,9 +127,31 @@ func _on_tomato_harvested(tomato_id: String) -> void:
 
 func _on_shovel_pressed() -> void:
 	print("SHOVEL BUTTON PRESSED")
+
 	player.select_shovel()
-	
+
 	# Highlight shovel
 	shovel_button.modulate = Color(1.5, 1.5, 1.5)
-	
+
+	# Remove other highlights
+	gun_button.modulate = Color.WHITE
+	base_button.modulate = Color.WHITE
+	mutated_button.modulate = Color.WHITE
+
 	print("SELECTED ITEM: SHOVEL")
+
+
+func _on_gun_pressed() -> void:
+	print("GUN BUTTON PRESSED")
+
+	player.select_gun()
+
+	# Highlight gun
+	gun_button.modulate = Color(1.5, 1.5, 1.5)
+
+	# Remove other highlights
+	shovel_button.modulate = Color.WHITE
+	base_button.modulate = Color.WHITE
+	mutated_button.modulate = Color.WHITE
+
+	print("SELECTED ITEM: GUN")
