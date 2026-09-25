@@ -6,6 +6,8 @@ extends Control
 @onready var mutated_button: TextureButton = $Panel/HBoxContainer/TextureButton2
 @onready var shovel_button: TextureButton = $Panel/HBoxContainer/TextureButton3
 @onready var gun_button: TextureButton = $Panel/HBoxContainer/TextureButton4
+@onready var nuke_button: TextureButton = $Panel/HBoxContainer/TextureButton5
+
 
 @onready var base_quantity_label: Label = (
 	$Panel/HBoxContainer/TextureButton/quantity_label
@@ -62,6 +64,7 @@ func _ready() -> void:
 	mutated_button.pressed.connect(_on_mutated_tomato_pressed)
 	shovel_button.pressed.connect(_on_shovel_pressed)
 	gun_button.pressed.connect(_on_gun_pressed)
+	nuke_button.pressed.connect(_on_nuke_pressed)
 	
 	player = get_tree().current_scene.get_node("Player")
 	
@@ -155,3 +158,16 @@ func _on_gun_pressed() -> void:
 	mutated_button.modulate = Color.WHITE
 
 	print("SELECTED ITEM: GUN")
+
+
+func _on_nuke_pressed() -> void:
+	print("NUKE BUTTON PRESSED")
+
+	player.select_nuke()
+
+	nuke_button.modulate = Color(1.5, 1.5, 1.5)
+
+	gun_button.modulate = Color.WHITE
+	shovel_button.modulate = Color.WHITE
+	base_button.modulate = Color.WHITE
+	mutated_button.modulate = Color.WHITE

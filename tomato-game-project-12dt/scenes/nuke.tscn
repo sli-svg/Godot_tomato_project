@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://vppa231fvhn8"]
+
+[ext_resource type="Script" uid="uid://7bjl7ogb328s" path="res://scenes/nuke.gd" id="1_xwflt"]
+
+[node name="nuke" type="Area2D" unique_id=1189865792]
+script = ExtResource("1_xwflt")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1601554100]
+
+[node name="Polygon2D" type="Polygon2D" parent="." unique_id=1664405213]

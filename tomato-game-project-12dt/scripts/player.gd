@@ -16,6 +16,12 @@ signal tomato_harvested(_tomato_id: String)
 
 @onready var harvest_radius: Line2D = $harvest_radius
 
+@export var nuke_scene: PackedScene
+@export var nuke_radius: float = 200.0
+
+var nuke_preview: Node2D = null
+var placed_nuke: Node2D = null
+
 var harvesting: bool = false
 var harvest_target: Node2D = null
 var harvest_progress: float = 0.0
@@ -56,6 +62,7 @@ func _physics_process(delta: float) -> void:
 	
 	# Harvest
 	if selected_item == "shovel":
+		update_harvest_target()
 		handle_harvesting(delta)
 	else:
 		reset_harvest()
@@ -69,10 +76,6 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 
-func _process(_delta: float) -> void:
-	update_harvest_target()
-
-
 func _shoot() -> void:
 	if not Input.is_action_just_pressed("ui_shoot"):
 		return
@@ -83,9 +86,8 @@ func _shoot() -> void:
 	var bullet = bullet_scene.instantiate()
 
 	bullet.global_position = bullet_spawn.global_position
-	bullet.rotation = (
-		get_global_mouse_position() - bullet.global_position
-	).angle()
+	bullet.rotation = bullet.global_position.angle_to_point(get_global_mouse_position())
+
 
 	get_tree().current_scene.add_child(bullet)
 
@@ -141,6 +143,16 @@ func select_gun() -> void:
 	selected_seed_id = ""
 
 	print("Gun selected")
+
+
+func select_nuke() -> void:
+	selected_item = "nuke"
+
+	# Deselect seed
+	selected_seed = null
+	selected_seed_id = ""
+
+	print("Nuke selected")
 
 
 func plant_seed(plant_position: Vector2) -> void:
