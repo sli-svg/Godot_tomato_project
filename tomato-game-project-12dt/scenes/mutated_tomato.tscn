@@ -17,74 +17,75 @@ script/source = "extends CharacterBody2D
 
 const HARVEST_STAGE: int = 1
 const MAX_GROWTH_STAGE: int = 1
-
-# Strength of knockback 
+ 
 const KNOCKBACK_STRENGTH: float = 300.0
 const KNOCKBACK_TIME: float = 0.2
 var knockback_timer: float = 0.0
 
 var growth_stage: int = 0
-var chase_player: bool = false
 var speed: int = 50
 
 var being_harvested: bool = false
 
 
 func _ready() -> void:
-	# Starts plant's growth animation
+	# Start the growth animation at the current growth stage.
 	$AnimationPlayer.play(str(growth_stage))
 	add_to_group(\"Tomato\")
 
 
 func _physics_process(_delta) -> void:
-	# Continuous knockback
+	# Continue applying knockback until the timer expires.
 	if knockback_timer > 0:
 		knockback_timer -= _delta
 		move_and_slide()
 		return
 		
-	# Stationary while being harvested
+	# Prevent the tomato from moving while it is being harvested.
 	if being_harvested:
 		velocity = Vector2.ZERO
 		return
 	
+	# Allow the player to harvest the tomato once it reaches the harvest stage.
 	if growth_stage >= HARVEST_STAGE:
 		harvest_ready = true
-
+	
+	# Make the tomato chase the player once it mutates.
 	if growth_stage >= MAX_GROWTH_STAGE:
-		chase_player = true
-		
 		var direction = (player.global_position - global_position).normalized()
 		velocity = direction * speed
 		move_and_slide()
 
 
 func _on_timer_timeout() -> void:
+	# Increase the growth stage whenever the timer finishes.
 	growth_stage += 1
 	
-	# Prevent further growth after stage 1
+	# Prevent the growth stage from exceeding the maximum.
 	if growth_stage > MAX_GROWTH_STAGE:
 		growth_stage = MAX_GROWTH_STAGE
-
-		
+	
+	# Play the animation that matches the new growth stage.
 	$AnimationPlayer.play(str(growth_stage))
 
 
 func _deal_damage(body: Node2D) -> void:
 	print(\"player touched plant\")
+	
 	if body.is_in_group(\"player\") and growth_stage >= dangerous_stage:
 		body._take_damage()
 		print(\"Player took damage\")
 		
+		# Knock the tomato away from the player.
 		var knockback_direction = (global_position - body.global_position).normalized()
 		velocity = knockback_direction * KNOCKBACK_STRENGTH
 		knockback_timer = KNOCKBACK_TIME
-		
+
 
 func _take_damage() -> void:
 	if health > 1:
 		health -= 1
-		print(\"tomato health is:\", int(health))
+		print(\"Tomato took damage\")
 	else:
 		queue_free()
 "

@@ -49,7 +49,7 @@ func _ready() -> void:
 		
 		print("PLAYER:", self)
 	
-	# Harvest radius
+	# Configurate harvest radius
 	print(harvest_radius)
 	harvest_radius.radius = harvest_range
 	harvest_radius.create_circle()
@@ -63,22 +63,22 @@ func _physics_process(delta: float) -> void:
 	direction.x = Input.get_axis("ui_left", "ui_right")
 	direction.y = Input.get_axis("ui_up", "ui_down")
 	
-	# Handle player actions
+	# Handle planting
 	if Input.is_action_just_pressed("plant_seed"):
 		plant_seed(global_position)
 	
-	# Harvest
+	# Handle harvesting
 	if selected_item == ITEM_SHOVEL:
 		update_harvest_target()
 		handle_harvesting(delta)
 	else:
 		reset_harvest()
 	
-	# Shoot
+	# Handle shooting
 	if selected_item == ITEM_GUN:
 		_shoot()
 	
-	# Nuke
+	# Handle nuke
 	if selected_item == ITEM_NUKE:
 		nuke_preview()
 	
@@ -109,6 +109,7 @@ func _shoot() -> void:
 	var bullet = bullet_scene.instantiate()
 
 	bullet.global_position = bullet_spawn.global_position
+	# Aim the bullet towards the mouse cursor.
 	bullet.rotation = bullet.global_position.angle_to_point(get_global_mouse_position())
 
 
@@ -194,6 +195,7 @@ func plant_seed(plant_position: Vector2) -> void:
 	
 	var inventory = get_tree().current_scene.get_node(INVENTORY_PATH)
 	
+	# Check that the selected seed exists and that the player has seeds remaining.
 	if not inventory.items.has(selected_seed_id):
 		print("Invalid seed ID:", selected_seed_id)
 		return
@@ -251,14 +253,14 @@ func handle_harvesting(delta: float) -> void:
 		reset_harvest()
 		return
 
-	# Check distance from player to tomato
+	# Check the distance between the player and the tomato.
 	var distance := global_position.distance_to(harvest_target.global_position)
 
 	if distance > harvest_range:
 		reset_harvest()
 		return
 
-	# Player is holding E
+	# Continue harvesting while the player holds E.
 	if Input.is_action_pressed("harvest"):
 		if not harvesting:
 			harvesting = true
@@ -266,12 +268,12 @@ func handle_harvesting(delta: float) -> void:
 		
 		harvest_progress += delta
 
-		# Three seconds completed
+		# Harvest the tomato once the required time has elapsed.
 		if harvest_progress >= harvest_time:
 			harvest_tomato()
 			
 	else:
-		# Player release E
+		# Reset harvesting when the player releases E.
 		reset_harvest()
 
 
@@ -285,7 +287,7 @@ func harvest_tomato() -> void:
 		reset_harvest()
 		return
 		
-	# Final distance check
+	# Perform final distance check before harvesting.
 	var distance := global_position.distance_to(tomato.global_position)
 	
 	if distance > harvest_range:
@@ -324,6 +326,7 @@ func reset_harvest() -> void:
 
 
 func nuke_preview() -> void:
+	# Create the nuke preview when the nuke is first selected.
 	if nuke == null:
 		if nuke_scene == null:
 			print("Cannot use nuke: nuke scene is not assigned.")
@@ -332,8 +335,10 @@ func nuke_preview() -> void:
 		
 		nuke = nuke_scene.instantiate()
 		get_tree().current_scene.add_child(nuke)
-
+	
+	# Move the preview with the mouse until it is placed.
 	if not nuke_placed:
+		# Move the nuke preview with the mouse until it is placed.
 		nuke.global_position = get_global_mouse_position()
 
 		if Input.is_action_just_pressed("place_nuke"):
@@ -341,6 +346,7 @@ func nuke_preview() -> void:
 			nuke.placed = true
 			print("NUKE PLACED")
 	
+	# Detonate the nuke after it has been placed.
 	if nuke_placed:
 		if Input.is_action_just_pressed("detonate_nuke"):
 			nuke.detonate()

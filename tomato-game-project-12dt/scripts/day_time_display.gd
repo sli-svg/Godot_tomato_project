@@ -24,6 +24,7 @@ func _get_time_label() -> String:
 	var display_hour: int
 	var meridian: String
 	
+	# Convert the 24-hour time into a 12-hour display.
 	if hours == 0:
 		display_hour = 12
 		meridian = "am"
@@ -37,10 +38,13 @@ func _get_time_label() -> String:
 		display_hour = hours - 12
 		meridian = "pm"
 	return str(display_hour) + " " + meridian
-	
-	
+
+
 func _update_time() -> void:
+	# Advance the time by one hour. 
 	hours += 1
+	
+	# Start a new day after the final hour.
 	if hours > LAST_HOUR:
 		hours = 0
 		days += 1

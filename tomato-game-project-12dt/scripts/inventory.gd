@@ -67,17 +67,17 @@ var items = {
 
 func _ready() -> void:
 	print("INVENTORY LOADED")
+	# Connect inventory buttons and player signals.
 	base_button.pressed.connect(_on_base_tomato_pressed)
 	mutated_button.pressed.connect(_on_mutated_tomato_pressed)
 	shovel_button.pressed.connect(_on_shovel_pressed)
 	gun_button.pressed.connect(_on_gun_pressed)
 	nuke_button.pressed.connect(_on_nuke_pressed)
 	
-	player = get_tree().current_scene.get_node("Player")
-	
 	player.seed_planted.connect(_on_seed_planted)
 	player.tomato_harvested.connect(_on_tomato_harvested)
 	
+	# Update the displayed seed quantities.
 	update_quantity_labels()
 
 
@@ -86,10 +86,10 @@ func _on_base_tomato_pressed() -> void:
 	
 	player.select_base_tomato()
 	
-	# Highlight base tomato button
+	# Highlight the selected item.
 	base_button.modulate = Color(1.5, 1.5, 1.5)
 	
-	# Undo highlight on mutated tomato button
+	# Remove highlights from the other items.
 	mutated_button.modulate = Color.WHITE
 	
 	print("PLAYER REFERENCE:", player)
@@ -104,10 +104,10 @@ func _on_mutated_tomato_pressed() -> void:
 	
 	player.select_mutated_tomato()
 	
-	# Highlight mutated tomato button
+	# Highlight the selected item.
 	mutated_button.modulate = Color(1.5, 1.5, 1.5)
 	
-	# Undo highlight on base tomato button
+	# Remove highlights from the other items.
 	base_button.modulate = Color.WHITE
 	
 	print("PLAYER REFERENCE:", player)
@@ -129,7 +129,8 @@ func _on_seed_planted(seed_id: String) -> void:
 	if items[seed_id]["quantity"] <= 0:
 		print("Cannot plant seed: no seeds remaining.")
 		return
-		
+	
+	# Remove one seed from the player's inventory.
 	items[seed_id]["quantity"] -= 1
 	update_quantity_labels()
 
@@ -147,7 +148,12 @@ func _on_tomato_harvested(tomato_id: String, amount: int) -> void:
 	if not items[tomato_id]["stackable"]:
 		print("Tomato item cannot be stacked:", tomato_id)
 		return
-		
+	
+	if amount <= 0:
+		print("Invalid harvest amount:", amount)
+		return
+	
+	# Add the harvested tomatoes to the player's inventory.
 	items[tomato_id]["quantity"] += amount
 	update_quantity_labels()
 	
@@ -161,10 +167,10 @@ func _on_shovel_pressed() -> void:
 
 	player.select_shovel()
 
-	# Highlight shovel
+	# Highlight the selected item.
 	shovel_button.modulate = Color(1.5, 1.5, 1.5)
 
-	# Remove other highlights
+	# Remove highlights from the other items.
 	gun_button.modulate = Color.WHITE
 	base_button.modulate = Color.WHITE
 	mutated_button.modulate = Color.WHITE
@@ -177,10 +183,10 @@ func _on_gun_pressed() -> void:
 
 	player.select_gun()
 
-	# Highlight gun
+	# Highlight the selected item.
 	gun_button.modulate = Color(1.5, 1.5, 1.5)
 
-	# Remove other highlights
+	# Remove highlights from the other items.
 	shovel_button.modulate = Color.WHITE
 	base_button.modulate = Color.WHITE
 	mutated_button.modulate = Color.WHITE
@@ -190,11 +196,13 @@ func _on_gun_pressed() -> void:
 
 func _on_nuke_pressed() -> void:
 	print("NUKE BUTTON PRESSED")
-
+	
 	player.select_nuke()
-
+	
+	# Highlight the selected item.
 	nuke_button.modulate = Color(1.5, 1.5, 1.5)
-
+	
+	# Remove highlights from the other items.
 	gun_button.modulate = Color.WHITE
 	shovel_button.modulate = Color.WHITE
 	base_button.modulate = Color.WHITE
