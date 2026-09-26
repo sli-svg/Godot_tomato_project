@@ -30,32 +30,33 @@ var hotbar = [
 	MUTATED_TOMATO_ID,
 ]
 
+
 var items = {
-	"gun": {
+	GUN_ID: {
 		"name": "Gun",
 		"category": "Weapon",
 		"stackable": false,
 		"quantity": 1,
 	},
-	"nuke": {
+	NUKE_ID: {
 		"name": "Nuke",
 		"category": "Weapon",
 		"stackable": false,
 		"quantity": 1,
 	},
-	"shovel": {
+	SHOVEL_ID: {
 		"name": "Shovel",
 		"category": "Tool",
 		"stackable": false,
 		"quantity": 1,
 	},
-	"base_tomato": {
+	BASE_TOMATO_ID: {
 		"name": "Tomato Seed",
 		"category": "Seed",
 		"stackable": true,
 		"quantity": 5,
 	},
-	"mutated_tomato": {
+	MUTATED_TOMATO_ID: {
 		"name": "Mutated Tomato Seed",
 		"category": "Seed",
 		"stackable": true,
@@ -134,8 +135,9 @@ func _on_seed_planted(seed_id: String) -> void:
 
 
 func update_quantity_labels() -> void:
-	base_quantity_label.text = str(items["base_tomato"]["quantity"])
-	mutated_quantity_label.text = str(items["mutated_tomato"]["quantity"])
+	base_quantity_label.text = str(items[BASE_TOMATO_ID]["quantity"])
+	mutated_quantity_label.text = str(items[MUTATED_TOMATO_ID]["quantity"])
+
 
 func _on_tomato_harvested(tomato_id: String, amount: int) -> void:
 	if not items.has(tomato_id):

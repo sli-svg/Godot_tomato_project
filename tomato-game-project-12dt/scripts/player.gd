@@ -3,6 +3,15 @@ extends CharacterBody2D
 signal seed_planted(_seed_id: String)
 signal tomato_harvested(_tomato_id: String, _amount: int)
 
+const INVENTORY_PATH: String = "CanvasLayer/Control/inventory"
+const BASE_TOMATO_ID: String = "base_tomato"
+const MUTATED_TOMATO_ID: String = "mutated_tomato"
+const ITEM_SHOVEL: String = "shovel"
+const ITEM_GUN: String = "gun"
+const ITEM_NUKE: String = "nuke"
+
+const NO_SELECTION: String = ""
+
 @export var bullet_spawn: Marker2D
 @export var bullet_scene: PackedScene
 @export var health_ui: ProgressBar
@@ -26,18 +35,11 @@ var health: int = 100
 var _can_shoot: bool = true
 
 var selected_seed: PackedScene = null
-var selected_seed_id : String = ""
-var selected_item: String = ""
+var selected_seed_id : String = NO_SELECTION
+var selected_item: String = NO_SELECTION
 
 var nuke_placed: bool = false
 var nuke: Node2D = null
-
-const INVENTORY_PATH: String = "CanvasLayer/Control/inventory"
-const BASE_TOMATO_ID: String = "base_tomato"
-const MUTATED_TOMATO_ID: String = "mutated_tomato"
-const ITEM_SHOVEL: String = "shovel"
-const ITEM_GUN: String = "gun"
-const ITEM_NUKE: String = "nuke"
 
 
 func _ready() -> void:
@@ -159,7 +161,7 @@ func select_shovel() -> void:
 
 	# Deselect seed
 	selected_seed = null
-	selected_seed_id = ""
+	selected_seed_id = NO_SELECTION
 
 	print("Shovel selected")
 
@@ -170,7 +172,7 @@ func select_gun() -> void:
 
 	# Deselect seed
 	selected_seed = null
-	selected_seed_id = ""
+	selected_seed_id = NO_SELECTION
 
 	print("Gun selected")
 
@@ -180,7 +182,7 @@ func select_nuke() -> void:
 
 	# Deselect seed
 	selected_seed = null
-	selected_seed_id = ""
+	selected_seed_id = NO_SELECTION
 
 	print("Nuke selected")
 
@@ -325,7 +327,7 @@ func nuke_preview() -> void:
 	if nuke == null:
 		if nuke_scene == null:
 			print("Cannot use nuke: nuke scene is not assigned.")
-			selected_item = ""
+			selected_item = NO_SELECTION
 			return
 		
 		nuke = nuke_scene.instantiate()
@@ -344,7 +346,7 @@ func nuke_preview() -> void:
 			nuke.detonate()
 			nuke = null
 			nuke_placed = false
-			selected_item = ""
+			selected_item = NO_SELECTION
 
 
 func cancel_nuke() -> void:
