@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://dc555lplhtj2k"]
 
 [ext_resource type="Script" uid="uid://foji51we880n" path="res://scripts/inventory.gd" id="1_qw0r6"]
-[ext_resource type="Texture2D" uid="uid://bd12n7r2id58u" path="res://assets/normal_tomato_seed_png.png" id="2_ty45s"]
-[ext_resource type="Texture2D" uid="uid://2mr65ietksee" path="res://assets/mutated_tomato_seed_png.png" id="3_53g1v"]
+[ext_resource type="Texture2D" uid="uid://emujkvefefvj" path="res://assets/normal_tomato_button.png" id="2_uae8j"]
+[ext_resource type="Texture2D" uid="uid://6cn6ppkqfgaf" path="res://assets/mutated_tomato_button.png" id="3_uae8j"]
 [ext_resource type="Texture2D" uid="uid://reg60h3yxkfd" path="res://assets/shovel_3.png" id="6_s887n"]
 [ext_resource type="Texture2D" uid="uid://cyu8g7wlwjs65" path="res://assets/gun_3.png" id="7_s887n"]
 [ext_resource type="Texture2D" uid="uid://3mxxwmbdal2s" path="res://assets/nuke_button.png" id="8_g71ie"]
@@ -32,7 +32,7 @@ offset_bottom = 29.0
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
-texture_normal = ExtResource("2_ty45s")
+texture_normal = ExtResource("2_uae8j")
 stretch_mode = 0
 
 [node name="quantity_label" type="Label" parent="Panel/HBoxContainer/TextureButton" unique_id=409960166]
@@ -46,7 +46,7 @@ text = "10"
 layout_mode = 2
 size_flags_horizontal = 3
 toggle_mode = true
-texture_normal = ExtResource("3_53g1v")
+texture_normal = ExtResource("3_uae8j")
 stretch_mode = 0
 
 [node name="quantity_label2" type="Label" parent="Panel/HBoxContainer/TextureButton2" unique_id=467782042]

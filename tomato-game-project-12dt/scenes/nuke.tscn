@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://vppa231fvhn8"]
 
 [ext_resource type="Script" uid="uid://7bjl7ogb328s" path="res://scripts/nuke.gd" id="1_xwflt"]
-[ext_resource type="Texture2D" uid="uid://bt7ai3vaw6o74" path="res://assets/Player 2.png" id="2_qnxym"]
+[ext_resource type="Texture2D" uid="uid://nd4ctflhqqqy" path="res://assets/nuke2.png" id="2_qnxym"]
 
 [node name="nuke" type="Area2D" unique_id=1189865792]
 script = ExtResource("1_xwflt")
