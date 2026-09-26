@@ -356,6 +356,8 @@ func nuke_preview() -> void:
 
 
 func cancel_nuke() -> void:
-	if nuke != null and not nuke_placed:
+	if nuke != null:
 		nuke.queue_free()
-		nuke = null
+
+	nuke = null
+	nuke_placed = false
