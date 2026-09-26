@@ -6,6 +6,10 @@ var placed: bool = false
 
 
 func _ready() -> void:
+	if explosion_radius <= 0:
+		print("Invalid explosion radius. Using default value.")
+		explosion_radius = 200.0
+
 	$explosion_radius.polygon = create_circle()
 
 

@@ -87,6 +87,18 @@ func _shoot() -> void:
 
 	if not _can_shoot:
 		return
+		
+	if bullet_scene == null:
+		print("Cannot shoot: bullet scene is not assigned.")
+		return
+
+	if bullet_spawn == null:
+		print("Cannot shoot: bullet spawn point is not assigned.")
+		return
+
+	if bullet_timer == null:
+		print("Cannot shoot: bullet timer is not assigned.")
+		return
 
 	var bullet = bullet_scene.instantiate()
 
@@ -170,6 +182,10 @@ func plant_seed(plant_position: Vector2) -> void:
 		return
 	
 	var inventory = get_tree().current_scene.get_node("CanvasLayer/Control/inventory")
+	
+	if not inventory.items.has(selected_seed_id):
+		print("Invalid seed ID:", selected_seed_id)
+		return
 	
 	if inventory.items[selected_seed_id]["quantity"] <= 0:
 		print("No seeds left!")
@@ -298,6 +314,11 @@ func reset_harvest() -> void:
 
 func nuke_preview() -> void:
 	if nuke == null:
+		if nuke_scene == null:
+			print("Cannot use nuke: nuke scene is not assigned.")
+			selected_item = ""
+			return
+		
 		nuke = nuke_scene.instantiate()
 		get_tree().current_scene.add_child(nuke)
 

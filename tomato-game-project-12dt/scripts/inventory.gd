@@ -111,6 +111,18 @@ func _on_mutated_tomato_pressed() -> void:
 
 
 func _on_seed_planted(seed_id: String) -> void:
+	if not items.has(seed_id):
+		print("Invalid seed ID:", seed_id)
+		return
+
+	if not items[seed_id]["stackable"]:
+		print("Item cannot be used as a seed:", seed_id)
+		return
+
+	if items[seed_id]["quantity"] <= 0:
+		print("Cannot plant seed: no seeds remaining.")
+		return
+		
 	items[seed_id]["quantity"] -= 1
 	update_quantity_labels()
 
@@ -120,6 +132,14 @@ func update_quantity_labels() -> void:
 	mutated_quantity_label.text = str(items["mutated_tomato"]["quantity"])
 
 func _on_tomato_harvested(tomato_id: String) -> void:
+	if not items.has(tomato_id):
+		print("Invalid tomato ID:", tomato_id)
+		return
+
+	if not items[tomato_id]["stackable"]:
+		print("Tomato item cannot be stacked:", tomato_id)
+		return
+		
 	items[tomato_id]["quantity"] += 3
 	update_quantity_labels()
 	
