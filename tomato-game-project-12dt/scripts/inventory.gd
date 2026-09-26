@@ -8,7 +8,6 @@ extends Control
 @onready var gun_button: TextureButton = $Panel/HBoxContainer/TextureButton4
 @onready var nuke_button: TextureButton = $Panel/HBoxContainer/TextureButton5
 
-
 @onready var base_quantity_label: Label = (
 	$Panel/HBoxContainer/TextureButton/quantity_label
 )
@@ -16,12 +15,19 @@ extends Control
 	$Panel/HBoxContainer/TextureButton2/quantity_label2
 )
 
+const GUN_ID: String = "gun"
+const NUKE_ID: String = "nuke"
+const SHOVEL_ID: String = "shovel"
+const BASE_TOMATO_ID: String = "base_tomato"
+const MUTATED_TOMATO_ID: String = "mutated_tomato"
+
+
 var hotbar = [
-	"gun",
-	"nuke",
-	"shovel",
-	"base_tomato",
-	"mutated_tomato",
+	GUN_ID,
+	NUKE_ID,
+	SHOVEL_ID,
+	BASE_TOMATO_ID,
+	MUTATED_TOMATO_ID,
 ]
 
 var items = {
@@ -131,7 +137,7 @@ func update_quantity_labels() -> void:
 	base_quantity_label.text = str(items["base_tomato"]["quantity"])
 	mutated_quantity_label.text = str(items["mutated_tomato"]["quantity"])
 
-func _on_tomato_harvested(tomato_id: String) -> void:
+func _on_tomato_harvested(tomato_id: String, amount: int) -> void:
 	if not items.has(tomato_id):
 		print("Invalid tomato ID:", tomato_id)
 		return
@@ -140,10 +146,10 @@ func _on_tomato_harvested(tomato_id: String) -> void:
 		print("Tomato item cannot be stacked:", tomato_id)
 		return
 		
-	items[tomato_id]["quantity"] += 3
+	items[tomato_id]["quantity"] += amount
 	update_quantity_labels()
 	
-	print("Added 3 ", tomato_id, " seeds")
+	print("Added ", amount, " ", tomato_id, " seeds")
 	print("Harvested:", tomato_id)
 	print("New quantity:", items[tomato_id]["quantity"])
 

@@ -11,6 +11,9 @@ extends CharacterBody2D
 
 @export var age: int = 0
 
+const HARVEST_STAGE: int = 1
+const MAX_GROWTH_STAGE: int = 2
+
 # Strength of knockback 
 const KNOCKBACK_STRENGTH: float = 300.0
 const KNOCKBACK_TIME: float = 0.2
@@ -40,10 +43,10 @@ func _physics_process(_delta) -> void:
 		velocity = Vector2.ZERO
 		return
 	
-	if growth_stage >= 1:
+	if growth_stage >= HARVEST_STAGE:
 		harvest_ready = true
 
-	if growth_stage >= 2:
+	if growth_stage >= MAX_GROWTH_STAGE:
 		chase_player = true
 		
 		var direction = (player.global_position - global_position).normalized()
@@ -56,8 +59,8 @@ func _on_timer_timeout() -> void:
 	growth_stage += 1
 	
 	# Prevent further growth after stage 2
-	if growth_stage > 2:
-		growth_stage = 2
+	if growth_stage > MAX_GROWTH_STAGE:
+		growth_stage = MAX_GROWTH_STAGE
 	
 	# Play animation which matches plant's new growth stage
 	$AnimationPlayer.play(str(growth_stage))

@@ -7,6 +7,9 @@ extends Control
 var hours: int = 0
 var days: int = 1
 
+const HOURS_PER_DAY: int = 24
+const LAST_HOUR: int = HOURS_PER_DAY - 1
+
 
 func _ready() -> void:
 	_refresh_display()
@@ -38,7 +41,7 @@ func _get_time_label() -> String:
 	
 func _update_time() -> void:
 	hours += 1
-	if hours > 23:
+	if hours > LAST_HOUR:
 		hours = 0
 		days += 1
 	

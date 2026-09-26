@@ -4,6 +4,8 @@ extends Area2D
 
 var placed: bool = false
 
+const CIRCLE_SEGMENTS: int = 64
+
 
 func _ready() -> void:
 	if explosion_radius <= 0:
@@ -21,8 +23,8 @@ func _process(_delta: float) -> void:
 func create_circle() -> PackedVector2Array:
 	var points := PackedVector2Array()
 
-	for i in range(64):
-		var angle = TAU * i / 64
+	for i in range(CIRCLE_SEGMENTS):
+		var angle = TAU * i / CIRCLE_SEGMENTS
 		var point = Vector2(cos(angle), sin(angle)) * explosion_radius
 		points.append(point)
 
