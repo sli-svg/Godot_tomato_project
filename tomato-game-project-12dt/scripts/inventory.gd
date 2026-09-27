@@ -86,7 +86,10 @@ func _on_base_tomato_pressed() -> void:
 	
 	player.select_base_tomato()
 	
-		# Highlight the selected item.
+	# Hide the harvest radius.
+	player.hide_harvest_radius()
+	
+	# Highlight the selected item.
 	base_button.modulate = Color(1.5, 1.5, 1.5)
 	
 	# Remove highlights from the other items.
@@ -97,7 +100,7 @@ func _on_base_tomato_pressed() -> void:
 	
 	print("PLAYER REFERENCE:", player)
 	print("SELECTED SEED:", player.selected_seed)
-
+	
 	base_button.button_pressed = true
 	mutated_button.button_pressed = false
 
@@ -106,6 +109,9 @@ func _on_mutated_tomato_pressed() -> void:
 	print("MUTATED TOMATO BUTTON PRESSED")
 	
 	player.select_mutated_tomato()
+	
+	# Hide the harvest radius.
+	player.hide_harvest_radius()
 	
 		# Highlight the selected item.
 	mutated_button.modulate = Color(1.5, 1.5, 1.5)
@@ -170,28 +176,31 @@ func _on_tomato_harvested(tomato_id: String, amount: int) -> void:
 
 func _on_shovel_pressed() -> void:
 	print("SHOVEL BUTTON PRESSED")
-
+	
 	player.select_shovel()
-
+	
 	# Highlight the selected item.
 	shovel_button.modulate = Color(1.5, 1.5, 1.5)
-
+	
 	# Remove highlights from the other items.
 	gun_button.modulate = Color.WHITE
 	base_button.modulate = Color.WHITE
 	mutated_button.modulate = Color.WHITE
-
+	
 	print("SELECTED ITEM: SHOVEL")
 
 
 func _on_gun_pressed() -> void:
 	print("GUN BUTTON PRESSED")
-
+	
 	player.select_gun()
-
+	
+	# Hide the harvest radius.
+	player.hide_harvest_radius()
+	
 	# Highlight the selected item.
 	gun_button.modulate = Color(1.5, 1.5, 1.5)
-
+	
 	# Remove highlights from the other items.
 	shovel_button.modulate = Color.WHITE
 	base_button.modulate = Color.WHITE
@@ -204,6 +213,9 @@ func _on_nuke_pressed() -> void:
 	print("NUKE BUTTON PRESSED")
 	
 	player.select_nuke()
+	
+	# Hide the harvest radius.
+	player.hide_harvest_radius()
 	
 	# Highlight the selected item.
 	nuke_button.modulate = Color(1.5, 1.5, 1.5)

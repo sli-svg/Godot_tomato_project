@@ -387,3 +387,7 @@ func cancel_nuke() -> void:
 		nuke.queue_free()
 		nuke = null
 		nuke_placed = false
+
+
+func hide_harvest_radius() -> void:
+	harvest_radius.visible = false
