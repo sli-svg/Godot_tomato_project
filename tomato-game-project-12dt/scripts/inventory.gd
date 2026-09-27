@@ -86,11 +86,14 @@ func _on_base_tomato_pressed() -> void:
 	
 	player.select_base_tomato()
 	
-	# Highlight the selected item.
+		# Highlight the selected item.
 	base_button.modulate = Color(1.5, 1.5, 1.5)
 	
 	# Remove highlights from the other items.
 	mutated_button.modulate = Color.WHITE
+	shovel_button.modulate = Color.WHITE
+	gun_button.modulate = Color.WHITE
+	nuke_button.modulate = Color.WHITE
 	
 	print("PLAYER REFERENCE:", player)
 	print("SELECTED SEED:", player.selected_seed)
@@ -104,11 +107,14 @@ func _on_mutated_tomato_pressed() -> void:
 	
 	player.select_mutated_tomato()
 	
-	# Highlight the selected item.
+		# Highlight the selected item.
 	mutated_button.modulate = Color(1.5, 1.5, 1.5)
 	
 	# Remove highlights from the other items.
 	base_button.modulate = Color.WHITE
+	shovel_button.modulate = Color.WHITE
+	gun_button.modulate = Color.WHITE
+	nuke_button.modulate = Color.WHITE
 	
 	print("PLAYER REFERENCE:", player)
 	print("SELECTED SEED:", player.selected_seed)
