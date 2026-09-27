@@ -44,9 +44,9 @@ script = ExtResource("6_tuyoq")
 
 [node name="number" type="Label" parent="." unique_id=842793819]
 offset_left = -8.0
-offset_top = -130.0
+offset_top = -131.0
 offset_right = 20.0
-offset_bottom = -107.0
+offset_bottom = -108.0
 text = "#"
 
 [node name="seconds" type="Label" parent="number" unique_id=299191893]
