@@ -1,14 +1,16 @@
 extends Control
 
+# Constants
+const HOURS_PER_DAY: int = 24
+const LAST_HOUR: int = HOURS_PER_DAY - 1
 
+# Onready variables
 @onready var date_label: Label = %date_label
 @onready var time_label: Label = %time_label
 
+# Variables
 var hours: int = 0
 var days: int = 1
-
-const HOURS_PER_DAY: int = 24
-const LAST_HOUR: int = HOURS_PER_DAY - 1
 
 
 func _ready() -> void:

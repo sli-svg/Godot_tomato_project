@@ -1,7 +1,19 @@
 extends Control
 
+
+# Constants
+const GUN_ID: String = "gun"
+const NUKE_ID: String = "nuke"
+const SHOVEL_ID: String = "shovel"
+const BASE_TOMATO_ID: String = "base_tomato"
+const MUTATED_TOMATO_ID: String = "mutated_tomato"
+
+
+# Exported variables
 @export var player: CharacterBody2D
 
+
+# Onready variables
 @onready var base_button: TextureButton = $Panel/HBoxContainer/TextureButton
 @onready var mutated_button: TextureButton = $Panel/HBoxContainer/TextureButton2
 @onready var shovel_button: TextureButton = $Panel/HBoxContainer/TextureButton3
@@ -15,13 +27,8 @@ extends Control
 	$Panel/HBoxContainer/TextureButton2/quantity_label2
 )
 
-const GUN_ID: String = "gun"
-const NUKE_ID: String = "nuke"
-const SHOVEL_ID: String = "shovel"
-const BASE_TOMATO_ID: String = "base_tomato"
-const MUTATED_TOMATO_ID: String = "mutated_tomato"
 
-
+# Variables
 var hotbar = [
 	GUN_ID,
 	NUKE_ID,
@@ -29,7 +36,6 @@ var hotbar = [
 	BASE_TOMATO_ID,
 	MUTATED_TOMATO_ID,
 ]
-
 
 var items = {
 	GUN_ID: {

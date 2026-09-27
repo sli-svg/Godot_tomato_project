@@ -1,5 +1,13 @@
 extends CharacterBody2D
 
+# Constants
+const HARVEST_STAGE: int = 1
+const MAX_GROWTH_STAGE: int = 2
+
+const KNOCKBACK_STRENGTH: float = 300.0
+const KNOCKBACK_TIME: float = 0.2
+
+# Exported variables
 @export_enum("normal", "mutated") var tomato_type: String = "normal"
 
 @export var amount: int = 2
@@ -7,16 +15,12 @@ extends CharacterBody2D
 @export var health: int = 5
 @export var dangerous_stage: int = 2
 
+# Onready variables
 @onready var player = get_tree().get_first_node_in_group("player")
 @onready var health_label: Label = $health_label
 
-const HARVEST_STAGE: int = 1
-const MAX_GROWTH_STAGE: int = 2
-
-const KNOCKBACK_STRENGTH: float = 300.0
-const KNOCKBACK_TIME: float = 0.2
+# Variables
 var knockback_timer: float = 0.0
- 
 var growth_stage: int = 0
 var speed: int = 50
 

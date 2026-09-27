@@ -1,12 +1,14 @@
 extends Area2D
 
+# Constants
 const DEFAULT_EXPLOSION_RADIUS: float = 200.0
+const CIRCLE_SEGMENTS: int = 64
 
+# Exported variables
 @export var explosion_radius: float = DEFAULT_EXPLOSION_RADIUS
 
+# Variables
 var placed: bool = false
-
-const CIRCLE_SEGMENTS: int = 64
 
 
 func _ready() -> void:

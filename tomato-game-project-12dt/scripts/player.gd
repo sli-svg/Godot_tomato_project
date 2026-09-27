@@ -1,8 +1,12 @@
 extends CharacterBody2D
 
+
+# Signals
 signal seed_planted(_seed_id: String)
 signal tomato_harvested(_tomato_id: String, _amount: int)
 
+
+# Constants
 const INVENTORY_PATH: String = "CanvasLayer/Control/inventory"
 const BASE_TOMATO_ID: String = "base_tomato"
 const MUTATED_TOMATO_ID: String = "mutated_tomato"
@@ -12,6 +16,8 @@ const ITEM_NUKE: String = "nuke"
 
 const NO_SELECTION: String = ""
 
+
+# Exported variables
 @export var bullet_spawn: Marker2D
 @export var bullet_scene: PackedScene
 @export var health_ui: ProgressBar
@@ -26,10 +32,14 @@ const NO_SELECTION: String = ""
 
 @export var game_over_panel: Control
 
+
+# Onready variables
 @onready var harvest_radius: Line2D = $harvest_radius
 @onready var harvest_timer_number: Label = $number
 @onready var harvest_timer_seconds: Label = $number/seconds
 
+
+# Variables
 var harvesting: bool = false
 var harvest_target: Node2D = null
 var harvest_progress: float = 0.0
@@ -39,7 +49,7 @@ var health: int = 100
 var _can_shoot: bool = true
 
 var selected_seed: PackedScene = null
-var selected_seed_id : String = NO_SELECTION
+var selected_seed_id: String = NO_SELECTION
 var selected_item: String = NO_SELECTION
 
 var nuke_placed: bool = false
