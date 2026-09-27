@@ -105,13 +105,14 @@ script = ExtResource("8_sscae")
 [node name="pause_menu" parent="CanvasLayer/Control" unique_id=1634844986 instance=ExtResource("9_3jp6d")]
 process_mode = 3
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+grow_horizontal = 1
+grow_vertical = 1
 
 [node name="game_over_panel2" parent="CanvasLayer/Control" unique_id=958528949 instance=ExtResource("10_41yrk")]
+visible = false
 layout_mode = 1
 
 [connection signal="pressed" from="CanvasLayer/Control/pause_button" to="CanvasLayer/Control/pause_menu" method="_on_pause_button_pressed"]

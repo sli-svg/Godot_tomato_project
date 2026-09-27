@@ -149,6 +149,9 @@ func _take_damage() -> void:
 func die() -> void:
 	print("PLAYER DIED")
 	
+	health = 0
+	health_ui.value = health
+	
 	if game_over_panel != null:
 		game_over_panel.show_game_over()
 	else:
