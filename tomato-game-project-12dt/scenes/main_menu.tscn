@@ -48,7 +48,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 text = "Quit"
 
-[node name="controls_button" type="Button" parent="PanelContainer/VBoxContainer" unique_id=1692957545]
+[node name="optiuons_button" type="Button" parent="PanelContainer/VBoxContainer" unique_id=1692957545]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -56,4 +56,4 @@ text = "Ctrls"
 
 [connection signal="pressed" from="PanelContainer/VBoxContainer/play_button" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/quit_button" to="." method="_on_quit_button_pressed"]
-[connection signal="pressed" from="PanelContainer/VBoxContainer/controls_button" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="PanelContainer/VBoxContainer/optiuons_button" to="." method="_on_options_button_pressed"]
