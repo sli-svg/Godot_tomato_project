@@ -29,13 +29,6 @@ func _on_restart_button_pressed() -> void:
 	hide()
 
 
-func _on_options_button_pressed() -> void:
-	# Unpause the game before changing scenes.
-	get_tree().paused = false
-	get_tree().call_deferred("change_scene_to_file", "res://scenes/optn_menu.tscn")
-	hide()
-
-
 func _on_main_menu_button_pressed() -> void:
 	# Unpause the game before returning to the main menu.
 	get_tree().paused = false
