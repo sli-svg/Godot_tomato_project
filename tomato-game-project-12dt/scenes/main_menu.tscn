@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bjq2wnh6fs5g7"]
 
 [ext_resource type="Script" uid="uid://dijjhu4mkdqdv" path="res://scripts/control.gd" id="1_5p55f"]
+[ext_resource type="Texture2D" uid="uid://dklwqwyfoj21" path="res://assets/tomato_menu.png" id="2_ekxnf"]
 
 [node name="Control" type="Control" unique_id=771321968]
 layout_mode = 3
@@ -21,32 +22,29 @@ offset_bottom = 189.0
 grow_horizontal = 2
 text = "Tomato Game"
 
-[node name="PanelContainer" type="PanelContainer" parent="." unique_id=751529849]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -24.0
-offset_top = -33.0
-offset_right = 24.0
-offset_bottom = 33.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="TextureRect" type="TextureRect" parent="." unique_id=2099996981]
+layout_mode = 0
+offset_left = -22.0
+offset_right = 1280.0
+offset_bottom = 720.0
+texture = ExtResource("2_ekxnf")
+expand_mode = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=759896806]
-layout_mode = 2
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=759896806]
+layout_mode = 0
+offset_left = 536.0
+offset_top = 440.0
+offset_right = 769.0
+offset_bottom = 542.0
+theme_override_constants/separation = 40
 
-[node name="play_button" type="Button" parent="PanelContainer/VBoxContainer" unique_id=1946994087]
+[node name="play_button" type="Button" parent="VBoxContainer" unique_id=1946994087]
 layout_mode = 2
-size_flags_horizontal = 4
 text = "Play"
 
-[node name="quit_button" type="Button" parent="PanelContainer/VBoxContainer" unique_id=759749789]
+[node name="quit_button" type="Button" parent="VBoxContainer" unique_id=759749789]
 layout_mode = 2
-size_flags_horizontal = 4
 text = "Quit"
 
-[connection signal="pressed" from="PanelContainer/VBoxContainer/play_button" to="." method="_on_play_button_pressed"]
-[connection signal="pressed" from="PanelContainer/VBoxContainer/quit_button" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/play_button" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/quit_button" to="." method="_on_quit_button_pressed"]

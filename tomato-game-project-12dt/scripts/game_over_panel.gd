@@ -1,4 +1,4 @@
-extends Panel
+extends Control
 
 @export_file("*.tscn") var main_menu_scene: String
 

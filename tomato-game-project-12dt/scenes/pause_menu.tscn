@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cx17j4q0qkahx"]
 
 [ext_resource type="Script" uid="uid://b3yg5uhfcjdgr" path="res://scripts/pause_menu.gd" id="1_n87rw"]
+[ext_resource type="Texture2D" uid="uid://c4y6h13y3kitc" path="res://assets/mouth.png" id="2_myx47"]
 
 [node name="Control" type="Control" unique_id=1634844986]
 layout_mode = 3
@@ -11,37 +12,35 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_n87rw")
 
-[node name="PanelContainer" type="PanelContainer" parent="." unique_id=2103971556]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -57.5
-offset_top = -68.0
-offset_right = 57.5
-offset_bottom = 68.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1408671050]
+layout_mode = 0
+offset_left = 508.0
+offset_top = 194.0
+offset_right = 777.0
+offset_bottom = 516.0
+texture = ExtResource("2_myx47")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=614387312]
-layout_mode = 2
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=614387312]
+layout_mode = 0
+offset_left = 582.5
+offset_top = 292.0
+offset_right = 697.5
+offset_bottom = 428.0
 size_flags_horizontal = 4
 
-[node name="resume_button" type="Button" parent="PanelContainer/VBoxContainer" unique_id=422798310]
+[node name="resume_button" type="Button" parent="VBoxContainer" unique_id=422798310]
 layout_mode = 2
 text = "Resume Level"
 
-[node name="restart_button" type="Button" parent="PanelContainer/VBoxContainer" unique_id=131067378]
+[node name="restart_button" type="Button" parent="VBoxContainer" unique_id=131067378]
 layout_mode = 2
 text = "Restart"
 
-[node name="main_menu_button" type="Button" parent="PanelContainer/VBoxContainer" unique_id=587464255]
+[node name="main_menu_button" type="Button" parent="VBoxContainer" unique_id=587464255]
 layout_mode = 2
 text = "Main Menu"
 
-[node name="quit_button" type="Button" parent="PanelContainer/VBoxContainer" unique_id=1088475311]
+[node name="quit_button" type="Button" parent="VBoxContainer" unique_id=1088475311]
 layout_mode = 2
 text = "Quit"
 
@@ -60,7 +59,7 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "GAME PAUSED"
 
-[connection signal="pressed" from="PanelContainer/VBoxContainer/resume_button" to="." method="_on_resume_button_pressed"]
-[connection signal="pressed" from="PanelContainer/VBoxContainer/restart_button" to="." method="_on_restart_button_pressed"]
-[connection signal="pressed" from="PanelContainer/VBoxContainer/main_menu_button" to="." method="_on_main_menu_button_pressed"]
-[connection signal="pressed" from="PanelContainer/VBoxContainer/quit_button" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/resume_button" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/restart_button" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/main_menu_button" to="." method="_on_main_menu_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/quit_button" to="." method="_on_quit_button_pressed"]

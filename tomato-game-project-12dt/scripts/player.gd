@@ -24,7 +24,7 @@ const NO_SELECTION: String = ""
 @export var harvest_range: float = 100.0
 @export var harvest_time: float = 3.0
 
-@export var game_over_panel: Panel
+@export var game_over_panel: Control
 
 @onready var harvest_radius: Line2D = $harvest_radius
 @onready var harvest_timer_number: Label = $number
@@ -141,6 +141,8 @@ func _take_damage() -> void:
 			health_ui.value = health
 
 	else:
+		health -= 1
+		health_ui.value = health
 		die()
 
 
