@@ -396,3 +396,23 @@ func cancel_nuke() -> void:
 
 func hide_harvest_radius() -> void:
 	harvest_radius.visible = false
+
+
+func disable_weapons() -> void:
+	# Stop shooting
+	_can_shoot = false
+
+	# Remove nuke completely, whether preview or already placed
+	if nuke != null and is_instance_valid(nuke):
+		nuke.queue_free()
+
+	nuke = null
+	nuke_placed = false
+
+	# Deselect gun/nuke
+	if selected_item == ITEM_GUN or selected_item == ITEM_NUKE:
+		selected_item = NO_SELECTION
+
+
+func enable_weapons() -> void:
+	_can_shoot = true

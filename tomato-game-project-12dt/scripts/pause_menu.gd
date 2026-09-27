@@ -1,11 +1,15 @@
 extends Control
 
+@export var player: CharacterBody2D
+
 
 func _ready() -> void:
 	hide()
 
 
 func _on_pause_button_pressed() -> void:
+	player.disable_weapons()
+	
 	# Pause the game and display the pause menu.
 	get_tree().paused = true
 	show()
@@ -17,6 +21,8 @@ func _on_quit_button_pressed() -> void:
 
 
 func _on_resume_button_pressed() -> void:
+	player.enable_weapons()
+	
 	# Resume the game and hide the pause menu.
 	get_tree().paused = false
 	hide()

@@ -102,7 +102,7 @@ offset_bottom = 76.08
 texture_normal = ExtResource("7_3jp6d")
 script = ExtResource("8_sscae")
 
-[node name="pause_menu" parent="CanvasLayer/Control" unique_id=1634844986 instance=ExtResource("9_3jp6d")]
+[node name="pause_menu" parent="CanvasLayer/Control" unique_id=1634844986 node_paths=PackedStringArray("player") instance=ExtResource("9_3jp6d")]
 process_mode = 3
 layout_mode = 1
 anchors_preset = 0
@@ -110,6 +110,7 @@ anchor_right = 0.0
 anchor_bottom = 0.0
 grow_horizontal = 1
 grow_vertical = 1
+player = NodePath("../../../Player")
 
 [node name="game_over_panel2" parent="CanvasLayer/Control" unique_id=958528949 instance=ExtResource("10_41yrk")]
 visible = false
