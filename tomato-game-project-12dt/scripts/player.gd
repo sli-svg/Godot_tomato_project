@@ -82,11 +82,11 @@ func _physics_process(delta: float) -> void:
 	else:
 		reset_harvest()
 	
-	# Handle shooting
-	if selected_item == ITEM_GUN:
+	# Handles shooting
+	if selected_item == ITEM_GUN and _can_shoot:
 		_shoot()
 	
-	# Handle nuke
+	# Handles Nuke
 	if selected_item == ITEM_NUKE:
 		nuke_preview()
 
@@ -103,9 +103,12 @@ func _physics_process(delta: float) -> void:
 
 
 func _shoot() -> void:
+	if get_viewport().gui_get_hovered_control() != null:
+		return
+	
 	if not Input.is_action_just_pressed("ui_shoot"):
 		return
-
+	
 	if not _can_shoot:
 		return
 		
@@ -399,19 +402,14 @@ func hide_harvest_radius() -> void:
 
 
 func disable_weapons() -> void:
-	# Stop shooting
 	_can_shoot = false
 
-	# Remove nuke completely, whether preview or already placed
 	if nuke != null and is_instance_valid(nuke):
 		nuke.queue_free()
 
 	nuke = null
 	nuke_placed = false
-
-	# Deselect gun/nuke
-	if selected_item == ITEM_GUN or selected_item == ITEM_NUKE:
-		selected_item = NO_SELECTION
+	selected_item = NO_SELECTION
 
 
 func enable_weapons() -> void:
