@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://c5l1batkw5k2a"]
 
 [ext_resource type="Texture2D" uid="uid://ffpq5an7jaud" path="res://assets/tomato_life_time.png" id="1_0h1sb"]
+[ext_resource type="AudioStream" uid="uid://qkaya7gr5gm1" path="res://assets/Squidward Scream - QuickSounds.com.mp3" id="2_8cebs"]
 
 [sub_resource type="GDScript" id="GDScript_6t0ye"]
 script/source = "extends CharacterBody2D
@@ -12,8 +13,8 @@ script/source = "extends CharacterBody2D
 @export var health: int = 5
 @export var dangerous_stage: int = 1
 
-
 @onready var player = get_tree().get_first_node_in_group(\"player\")
+@onready var health_label: Label = $health_label
 
 const HARVEST_STAGE: int = 1
 const MAX_GROWTH_STAGE: int = 1
@@ -26,12 +27,14 @@ var growth_stage: int = 0
 var speed: int = 50
 
 var being_harvested: bool = false
+var is_screaming: bool = false
 
 
 func _ready() -> void:
 	# Start the growth animation at the current growth stage.
 	$AnimationPlayer.play(str(growth_stage))
 	add_to_group(\"Tomato\")
+	update_health_label()
 
 
 func _physics_process(_delta) -> void:
@@ -50,8 +53,12 @@ func _physics_process(_delta) -> void:
 	if growth_stage >= HARVEST_STAGE:
 		harvest_ready = true
 	
-	# Make the tomato chase the player once it mutates.
+	# Make the tomato chase the player and scream once it mutates.
 	if growth_stage >= MAX_GROWTH_STAGE:
+		if not is_screaming:
+			is_screaming = true
+			$AudioStreamPlayer2D.play()
+		
 		var direction = (player.global_position - global_position).normalized()
 		velocity = direction * speed
 		move_and_slide()
@@ -85,9 +92,20 @@ func _deal_damage(body: Node2D) -> void:
 func _take_damage() -> void:
 	if health > 1:
 		health -= 1
+		update_health_label()
 		print(\"Tomato took damage\")
 	else:
+		$AudioStreamPlayer2D.stop()
 		queue_free()
+
+
+func _on_audio_stream_player_2d_finished() -> void:
+	if is_screaming:
+		$AudioStreamPlayer2D.play()
+
+
+func update_health_label() -> void:
+	health_label.text = str(health) + \" / 5\"
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0h1sb"]
@@ -447,5 +465,16 @@ position = Vector2(-1, -11)
 rotation = 1.5707964
 shape = SubResource("CircleShape2D_0h1sb")
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1582358712]
+stream = ExtResource("2_8cebs")
+
+[node name="health_label" type="Label" parent="." unique_id=393787834]
+offset_left = -13.0
+offset_top = 1.0
+offset_right = 13.0
+offset_bottom = 24.0
+text = "#/5"
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="body_entered" from="Area2D" to="." method="_deal_damage"]
+[connection signal="finished" from="AudioStreamPlayer2D" to="." method="_on_audio_stream_player_2d_finished"]

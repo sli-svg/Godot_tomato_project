@@ -42,6 +42,20 @@ wait_time = 0.3
 [node name="harvest_radius" type="Line2D" parent="." unique_id=350518476]
 script = ExtResource("6_tuyoq")
 
+[node name="number" type="Label" parent="." unique_id=842793819]
+offset_left = -8.0
+offset_top = -130.0
+offset_right = 20.0
+offset_bottom = -107.0
+text = "#"
+
+[node name="seconds" type="Label" parent="number" unique_id=299191893]
+layout_mode = 0
+offset_left = 13.0
+offset_right = 21.0
+offset_bottom = 23.0
+text = "s"
+
 [connection signal="seed_planted" from="." to="." method="_on_seed_planted"]
 [connection signal="tomato_harvested" from="." to="." method="_on_tomato_harvested"]
 [connection signal="timeout" from="Timer" to="." method="_bullet_cooldown"]

@@ -37,9 +37,9 @@ stretch_mode = 0
 
 [node name="quantity_label" type="Label" parent="Panel/HBoxContainer/TextureButton" unique_id=409960166]
 layout_mode = 0
-offset_top = 23.0
-offset_right = 21.0
-offset_bottom = 46.0
+offset_left = 54.0
+offset_right = 75.0
+offset_bottom = 23.0
 text = "10"
 
 [node name="TextureButton2" type="TextureButton" parent="Panel/HBoxContainer" unique_id=994808661]
@@ -51,9 +51,9 @@ stretch_mode = 0
 
 [node name="quantity_label2" type="Label" parent="Panel/HBoxContainer/TextureButton2" unique_id=467782042]
 layout_mode = 0
-offset_top = 23.0
-offset_right = 21.0
-offset_bottom = 46.0
+offset_left = 56.0
+offset_right = 77.0
+offset_bottom = 23.0
 text = "10"
 
 [node name="TextureButton3" type="TextureButton" parent="Panel/HBoxContainer" unique_id=907448081]

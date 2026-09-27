@@ -24,7 +24,11 @@ const NO_SELECTION: String = ""
 @export var harvest_range: float = 100.0
 @export var harvest_time: float = 3.0
 
+@export var game_over_panel: Panel
+
 @onready var harvest_radius: Line2D = $harvest_radius
+@onready var harvest_timer_number: Label = $number
+@onready var harvest_timer_seconds: Label = $number/seconds
 
 var harvesting: bool = false
 var harvest_target: Node2D = null
@@ -49,7 +53,11 @@ func _ready() -> void:
 		
 		print("PLAYER:", self)
 	
-	# Configurate harvest radius
+	# Set the harvest timer text.
+	harvest_timer_number.visible = false
+	harvest_timer_seconds.visible = false
+	
+	# Configurate the harvest radius.
 	print(harvest_radius)
 	harvest_radius.radius = harvest_range
 	harvest_radius.create_circle()
@@ -81,6 +89,13 @@ func _physics_process(delta: float) -> void:
 	# Handle nuke
 	if selected_item == ITEM_NUKE:
 		nuke_preview()
+
+	# Allow detonation of nuke even if another item is selected.
+	if nuke_placed and is_instance_valid(nuke):
+		if Input.is_action_just_pressed("detonate_nuke"):
+			nuke.detonate()
+			nuke = null
+			nuke_placed = false
 	
 	# Apply movement
 	velocity = speed * direction.normalized()
@@ -131,7 +146,11 @@ func _take_damage() -> void:
 
 func die() -> void:
 	print("PLAYER DIED")
-	get_tree().call_deferred("reload_current_scene")
+	
+	if game_over_panel != null:
+		game_over_panel.show_game_over()
+	else:
+		print("ERROR: Game Over Panel is not assigned!")
 
 
 func _bullet_cooldown() -> void:
@@ -265,9 +284,20 @@ func handle_harvesting(delta: float) -> void:
 		if not harvesting:
 			harvesting = true
 			harvest_target.being_harvested = true
+			
+			# Show the timer.
+			harvest_timer_number.visible = true
+			harvest_timer_seconds.visible = true
 		
 		harvest_progress += delta
-
+		
+		# Calculate the remaining time.
+		var time_remaining: int = int(ceil(harvest_time - harvest_progress))
+		
+		# Tell the label what to display.
+		harvest_timer_number.text = str(time_remaining)
+		harvest_timer_seconds.text = "s"
+		
 		# Harvest the tomato once the required time has elapsed.
 		if harvest_progress >= harvest_time:
 			harvest_tomato()
@@ -322,6 +352,10 @@ func reset_harvest() -> void:
 	harvest_progress = 0.0
 	harvesting = false
 	
+	# Hide the harvest timer. 
+	harvest_timer_number.visible = false
+	harvest_timer_seconds.visible = false
+	
 	print("HARVEST RESET! harvesting =", harvesting)
 
 
@@ -345,19 +379,11 @@ func nuke_preview() -> void:
 			nuke_placed = true
 			nuke.placed = true
 			print("NUKE PLACED")
-	
-	# Detonate the nuke after it has been placed.
-	if nuke_placed:
-		if Input.is_action_just_pressed("detonate_nuke"):
-			nuke.detonate()
-			nuke = null
-			nuke_placed = false
-			selected_item = NO_SELECTION
 
 
 func cancel_nuke() -> void:
-	if nuke != null:
+	# Only remove the nuke if it is still a preview.
+	if nuke != null and not nuke_placed:
 		nuke.queue_free()
-
-	nuke = null
-	nuke_placed = false
+		nuke = null
+		nuke_placed = false

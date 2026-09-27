@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://ckvchcd27chtf"]
+
+[ext_resource type="Script" uid="uid://gejhcxfnikce" path="res://scripts/game_over_panel.gd" id="1_dme80"]
+
+[node name="game_over_panel" type="Panel" unique_id=958528949]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -116.0625
+offset_top = -114.5
+offset_right = 116.0625
+offset_bottom = 114.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_dme80")
+main_menu_scene = "uid://bjq2wnh6fs5g7"
+
+[node name="game_over" type="Label" parent="." unique_id=2092871998]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.068
+anchor_right = 0.5
+anchor_bottom = 0.068
+offset_left = -42.5
+offset_top = -5.8480015
+offset_right = 49.5
+offset_bottom = 17.151999
+grow_horizontal = 2
+text = "GAME OVER"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1279820573]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.0
+offset_top = -50.5
+offset_right = 48.0
+offset_bottom = 50.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="restart_button" type="Button" parent="VBoxContainer" unique_id=1927979146]
+layout_mode = 2
+text = "Restart"
+
+[node name="main_menu_button" type="Button" parent="VBoxContainer" unique_id=1848669581]
+layout_mode = 2
+text = "Main Menu"
+
+[node name="quit_button" type="Button" parent="VBoxContainer" unique_id=668237748]
+layout_mode = 2
+text = "Quit"
+
+[connection signal="pressed" from="VBoxContainer/restart_button" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/main_menu_button" to="." method="_on_main_menu_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/quit_button" to="." method="_on_quit_button_pressed"]

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b0citcooft3ca"
+path="res://.godot/imported/Chicken scream - QuickSounds.com.mp3-898d8b94b9151f79c4ef7cd48a682aac.mp3str"
+
+[deps]
+
+source_file="res://assets/Chicken scream - QuickSounds.com.mp3"
+dest_files=["res://.godot/imported/Chicken scream - QuickSounds.com.mp3-898d8b94b9151f79c4ef7cd48a682aac.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

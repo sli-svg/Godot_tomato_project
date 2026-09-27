@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://qkaya7gr5gm1"
+path="res://.godot/imported/Squidward Scream - QuickSounds.com.mp3-c254469392b936ee8f2c857f4876fa4d.mp3str"
+
+[deps]
+
+source_file="res://assets/Squidward Scream - QuickSounds.com.mp3"
+dest_files=["res://.godot/imported/Squidward Scream - QuickSounds.com.mp3-c254469392b936ee8f2c857f4876fa4d.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

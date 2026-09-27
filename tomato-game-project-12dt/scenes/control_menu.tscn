@@ -1,13 +1,13 @@
 [gd_scene format=3 uid="uid://dfydeqhfbwtvv"]
 
-[ext_resource type="Script" uid="uid://bj0uqebscgorx" path="res://scripts/optn_menu.gd" id="1_v0noh"]
+[ext_resource type="Script" uid="uid://bj0uqebscgorx" path="res://scripts/optn_menu.gd" id="1_a1ram"]
 
 [node name="Control" type="Control" unique_id=750914222]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-script = ExtResource("1_v0noh")
+script = ExtResource("1_a1ram")
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=360999719]
 layout_mode = 1

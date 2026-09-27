@@ -8,8 +8,7 @@ extends CharacterBody2D
 @export var dangerous_stage: int = 2
 
 @onready var player = get_tree().get_first_node_in_group("player")
-
-@export var age: int = 0
+@onready var health_label: Label = $health_label
 
 const HARVEST_STAGE: int = 1
 const MAX_GROWTH_STAGE: int = 2
@@ -22,12 +21,15 @@ var growth_stage: int = 0
 var speed: int = 50
 
 var being_harvested: bool = false
+var is_screaming: bool = false
 
 
 func _ready() -> void:
 	# Start the growth animation at the current growth stage.
 	$AnimationPlayer.play(str(growth_stage))
 	add_to_group("Tomato")
+	update_health_label()
+
 
 func _physics_process(_delta) -> void:
 	# Continue applying knockback until the timer expires.
@@ -45,8 +47,12 @@ func _physics_process(_delta) -> void:
 	if growth_stage >= HARVEST_STAGE:
 		harvest_ready = true
 	
-	# Make the tomato chase the player once it mutates.
+	# Make the tomato chase the player and scream once it mutates.
 	if growth_stage >= MAX_GROWTH_STAGE:
+		if not is_screaming:
+			is_screaming = true
+			$AudioStreamPlayer2D.play()
+		
 		var direction = (player.global_position - global_position).normalized()
 		velocity = direction * speed
 		move_and_slide()
@@ -80,6 +86,17 @@ func _deal_damage(body: Node2D) -> void:
 func _take_damage() -> void:
 	if health > 1:
 		health -= 1
+		update_health_label()
 		print("Tomato took damage")
 	else:
+		$AudioStreamPlayer2D.stop()
 		queue_free()
+
+
+func _on_audio_stream_player_2d_finished() -> void:
+	if is_screaming:
+		$AudioStreamPlayer2D.play()
+
+
+func update_health_label() -> void:
+	health_label.text = str(health) + " / 5"

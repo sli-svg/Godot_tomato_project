@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bfc5naxqs2es4" path="res://assets/pause_button3.png" id="7_3jp6d"]
 [ext_resource type="Script" uid="uid://doigasr0i1ymo" path="res://scripts/pause_button.gd" id="8_sscae"]
 [ext_resource type="PackedScene" uid="uid://cx17j4q0qkahx" path="res://scenes/pause_menu.tscn" id="9_3jp6d"]
+[ext_resource type="PackedScene" uid="uid://ckvchcd27chtf" path="res://scenes/game_over_panel.tscn" id="10_41yrk"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tbgi4"]
 bg_color = Color(0.65663403, 0, 0.0858014, 1)
@@ -19,9 +20,10 @@ bg_color = Color(1.6845763e-06, 0.6722109, 0.008094437, 1)
 [node name="Node2D" type="Node2D" unique_id=680051062]
 script = ExtResource("1_oah5t")
 
-[node name="Player" parent="." unique_id=288673987 node_paths=PackedStringArray("health_ui") instance=ExtResource("2_r8daj")]
+[node name="Player" parent="." unique_id=288673987 node_paths=PackedStringArray("health_ui", "game_over_panel") instance=ExtResource("2_r8daj")]
 position = Vector2(554, 238)
 health_ui = NodePath("../CanvasLayer/Control/player_health")
+game_over_panel = NodePath("../CanvasLayer/Control/game_over_panel2")
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player" unique_id=864489997]
 visibility_layer = 5
@@ -104,5 +106,9 @@ script = ExtResource("8_sscae")
 process_mode = 3
 visible = false
 layout_mode = 0
+
+[node name="game_over_panel2" parent="CanvasLayer/Control" unique_id=958528949 instance=ExtResource("10_41yrk")]
+layout_mode = 0
+anchors_preset = 0
 
 [connection signal="pressed" from="CanvasLayer/Control/pause_button" to="CanvasLayer/Control/pause_menu" method="_on_pause_button_pressed"]

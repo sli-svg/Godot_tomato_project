@@ -1,23 +1,20 @@
 [gd_scene format=3 uid="uid://85mvas8ctl6m"]
 
 [ext_resource type="Script" uid="uid://dx3iam2rdcj7q" path="res://scripts/base_tomato.gd" id="1_vv46m"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vv46m"]
-radius = 11.0
-height = 31.999998
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4ucuw"]
-load_path = "res://.godot/imported/tomato_life_time.png-91fd633ab7e236b3259ded617c8351b4.ctex"
+[ext_resource type="AudioStream" uid="uid://bjnknmj1mjc40" path="res://assets/Disappear Scream - QuickSounds.com.mp3" id="2_gwv3b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vv46m"]
 size = Vector2(12, 1)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4ucuw"]
+load_path = "res://.godot/imported/tomato_life_time.png-91fd633ab7e236b3259ded617c8351b4.ctex"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vv46m"]
 radius = 13.0
 
 [sub_resource type="Animation" id="Animation_d1i32"]
 resource_name = "0"
-length = 20.0
+length = 60.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -127,13 +124,17 @@ tracks/8/keys = {
 "values": []
 }
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vv46m"]
+radius = 11.0
+height = 31.999998
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gwv3b"]
 radius = 13.0
 height = 34.0
 
 [sub_resource type="Animation" id="Animation_xcms5"]
 resource_name = "1"
-length = 20.0
+length = 60.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -520,12 +521,12 @@ _data = {
 script = ExtResource("1_vv46m")
 
 [node name="solid_collision" type="CollisionShape2D" parent="." unique_id=39917096]
-position = Vector2(-1, -11)
+position = Vector2(-0.4999998, -6)
 rotation = 1.5707964
-shape = SubResource("CapsuleShape2D_vv46m")
+shape = SubResource("RectangleShape2D_vv46m")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=428324084]
-position = Vector2(-1, -14)
+position = Vector2(0, -9)
 texture = SubResource("CompressedTexture2D_4ucuw")
 region_enabled = true
 region_rect = Rect2(0, 56, 32, 32)
@@ -544,5 +545,16 @@ position = Vector2(-1, -10)
 rotation = 1.5707964
 shape = SubResource("CircleShape2D_vv46m")
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=471112657]
+stream = ExtResource("2_gwv3b")
+
+[node name="health_label" type="Label" parent="." unique_id=287019332]
+offset_left = -13.0
+offset_top = 3.0
+offset_right = 13.0
+offset_bottom = 26.0
+text = "#/5"
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="body_entered" from="Area2D" to="." method="_deal_damage"]
+[connection signal="finished" from="AudioStreamPlayer2D" to="." method="_on_audio_stream_player_2d_finished"]
