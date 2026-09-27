@@ -11,7 +11,7 @@ func _ready() -> void:
 	if radius <= 0:
 		radius = DEFAULT_RADIUS
 	
-	default_color = Color(1.0, 0.75, 0.1, 0.5)
+	default_color = Color(1.0, 1.0, 1.0, 0.5)
 	width = CIRCLE_LINE_WIDTH
 	create_circle()
 
